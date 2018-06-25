@@ -1,0 +1,546 @@
+a {
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.btn {
+    margin: 3px;
+}
+
+.display-none {
+    display: none;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.mypobox-row-nomargin {
+    margin: 0px !important;
+}
+
+.mypobox-app-container {
+    width: 100%;
+    margin: auto;
+}
+
+.mypobox-navbar-col {
+    background: #337AB7;
+    border: 1px solid #337AB7;
+    border-radius: 5px;
+    margin: 0px 0px 4px 0px;
+}
+
+.mypobox-nav {
+    list-style-type: none;
+    text-decoration: none;
+    padding: 3px;
+    margin: 0px;
+}
+
+.mypobox-nav a {
+    height: 35px;
+    color: #fff;
+    margin: 2px;
+    padding: 5px;
+    border: 1px solid #337AB7;
+}
+
+.mypobox-nav li {
+    display: inline-block;
+}
+
+.activelink {
+    background-color: #fff !important;
+    color: #025CA6 !important;
+    text-decoration: none !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+/* New style */
+
+.nopadding {
+    padding: 0 !important;
+}
+
+.mypobox-panel {
+    margin-top: 5px;
+}
+
+.mypobox-panel-heading-row div {
+    display: inline-block;
+}
+
+.mypobox-panel-heading-text {
+    text-align: center !important;
+    display: block;
+    float: left;
+    width: 100%;
+}
+
+.mypobox-panel-heading-upgrade-text {
+    text-align: center !important;
+    display: block;
+    float: left;
+}
+
+.mypobox-chevron-div {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.mypobox-back {
+    cursor: pointer;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.mypobox-back a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.mypobox-table td {
+    vertical-align: middle !important;
+}
+
+.mypobox-table-div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.mypobox-table-div>span {
+    display: block;
+}
+
+.mypobox-postbox-icon {
+    color: #074307;
+    font-size: 120%;
+}
+
+.mypobox-validuntill {
+    font-size: 80%;
+}
+
+.mypobox-validuntill-date {
+    font-weight: bold;
+}
+
+.mypobox-action {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.mypobox-customername {
+    font-weight: bold;
+}
+
+.mypobox-accounttype {
+    font-style: italic;
+}
+
+.mypobox-postbox-icon-td {
+    width: 20%;
+}
+
+.mypobox-account-td {
+    width: 60%;
+}
+
+.mypobox-action-td {
+    width: 20%;
+}
+
+.mypobox-amount-field {
+    text-align: right;
+    font-weight: bold;
+    font-size: 95%;
+}
+
+.mypobox-label-parent {
+    text-align: left;
+}
+
+.mypobox-label {
+    display: inline-block !important;
+    padding: 1.1em 2.1em;
+}
+
+.mypobox-label a {
+    color: #fff;
+}
+
+.mypobox-order-date {
+    font-weight: bold;
+    font-size: 85%;
+    color: #888;
+}
+
+.mypobox-order-number {
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.mypobox-order-number a {
+    text-decoration: none;
+}
+
+.mypobox-label {
+    cursor: default;
+}
+
+.mypobox-label a {
+    text-decoration: none;
+}
+
+.mypobox-orderdetail-header-ordernumber {
+    font-size: 85%;
+}
+
+.mypobox-contract-details {
+    text-align: left;
+}
+
+.mypobox-order-detail-icon {
+    font-size: 180%;
+}
+
+.mypobox-order-details-box {
+    font-weight: bold;
+}
+
+.mypobox-order-details-expiry {
+    font-weight: bold;
+    color: #888;
+}
+
+.mypobox-order-detail-row {
+    padding-bottom: 10px;
+    margin: 5px 5px 5px 5px;
+}
+
+.mypobox-order-detail-row-border {
+    padding-bottom: 10px;
+    margin: 5px 5px 5px 5px;
+    border-bottom: 1.2px solid lightgray;
+}
+
+.mypobox-order-detail-table-th {
+    font-weight: bold;
+    color: #888;
+}
+
+.mypobox-total-row {
+    font-weight: bold;
+    font-style: italic;
+    color: #888;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.mypobox-total-amount {
+    font-weight: bold;
+    color: rgba(199, 114, 0, 0.74);
+}
+
+.mypobox-order-detail-paynow {
+    text-align: center;
+}
+
+.mypobox-paynow-btn {
+    color: #fff;
+    font-weight: bold;
+}
+
+.mypobox-txn-number {
+    font-weight: bold;
+}
+
+.mypobox-txn-number a {
+    text-decoration: none;
+}
+
+.mypobox-expand-collapse-chevron {
+    cursor: pointer;
+    margin: 20px 0px;
+    font-weight: bold;
+    font-size: 105%;
+    display: block;
+}
+
+.mypobox-checkout-button-div {
+    padding: 10px 0px 20px 0px;
+    border-top: 1px solid lightgrey;
+}
+
+.mypobox-placeholder-text {
+    font-style: italic;
+    font-weight: bold;
+    color: grey;
+    font-size: 120%;
+    margin: 30px;
+}
+
+.label-expired {
+    color: grey;
+}
+
+.label-paid {
+    color: #337ab7;
+}
+
+.block-display{
+    display: block;
+}
+
+.label-not-paid{
+    color: #d9534f;
+}
+
+[ng\:cloak],
+[ng-cloak],
+.ng-cloak {
+    display: none !important;
+}
+
+.panel-heading {
+    padding: 2px 5px;
+}
+
+.clr {
+    clear: both;
+}
+
+.mypobox-table-header th {
+    color: grey;
+}
+
+.payment-form-div {
+    display: none;
+}
+
+.mypobox-error-payment-text {
+    font-weight: bold;
+    color: salmon;
+    font-size: 140%;
+    margin: 30px;
+}
+
+.mypobox-success-payment-text {
+    font-weight: bold;
+    color: green;
+    font-size: 140%;
+    margin: 30px;
+}
+
+.mypobox-mobile-table {
+    display: none;
+}
+
+@media only screen and (max-width: 595px) {
+    .mypobox-mobile-table {
+        display: block;
+    }
+    .mypobox-desktop-table {
+        display: none;
+    }
+    .mypobox-amount-field {
+        font-weight: bold;
+        font-size: 95%;
+        text-align: left;
+    }
+    .table>tbody>tr>td,
+    .table>tbody>tr>th,
+    .table>tfoot>tr>td,
+    .table>tfoot>tr>th,
+    .table>thead>tr>td,
+    .table>thead>tr>th {
+        padding: 4px;
+    }
+    .mypobox-table-div {
+        display: inline-block;
+    }
+}
+
+.list_style_none {
+    list-style-type: none;
+    text-decoration: none;
+    padding: 3px;
+    margin-left: 2px;
+}
+
+.mypobox-mobile-orders-view {
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid lightblue;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mypobox-mobile-orders-view:first-child {
+    border-top: 1px solid lightblue;
+}
+
+.mypobox-mobile-orders-div {
+    display: inline-block;
+    width: 49%;
+    box-sizing: border-box;
+}
+
+.mypobox-mobile-actions-div {
+    display: inline-block;
+    width: 49%;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+.mypobox-small-font {
+    font-size: 14px;
+}
+
+.mypobox-medium-font {
+    font-size: 16px;
+}
+
+.mypobox-large-font {
+    font-size: 20px;
+}
+
+.mypobox-extra-large-font {
+    font-size: 36px;
+}
+
+._main_app_container {
+    min-height: 600px;
+}
+
+/* upgrade css */
+
+/* input fields with class fields.*/
+
+.form_wrap input.fields,
+.form_wrap select.fields {
+    color: #69B2DA;
+    font-size: 12px;
+    border: solid 1px #69B2DA;
+    padding: 5px 9px;
+    width: 100%;
+}
+
+.form_wrap .col-sm-7.col-xs-12 {
+    margin-bottom: 5px;
+}
+
+.thead-default {
+    background-color: #eaeaea;
+}
+
+.proceedbtn {
+    background: #fff;
+    color: #529FCD;
+    text-align: center;
+    padding: 2px 10px;
+    border: none;
+    font-size: 12px;
+    line-height: 24px;
+    text-transform: none;
+    border: solid 1px #529FCD;
+    width: 100px;
+    margin: 0px 4px;
+}
+
+.booking-button {
+    float: right;
+}
+
+.btn-custom {
+    padding: 1px 15px;
+    font-size: 13px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
+.mandatory-field {
+    color: red;
+}
+
+#radioBtn .notActive {
+    color: #3276b1;
+    background-color: #fff;
+}
+
+a.btncheck {
+    font-size: 71% !important;
+    text-decoration: none;
+}
+
+._720kb-datepicker-calendar {
+    width: 200px !important;
+    top: -263px !important;
+}
+
+.hr-style {
+    border: 0;
+    clear: both;
+    display: block;
+    background-color: #337ab7;
+    height: 1px;
+}
+
+.funky-show-hide.ng-hide-add {
+    transform: rotateZ(0);
+    transform-origin: right;
+    transition: all 0.5s ease-in-out;
+}
+
+.funky-show-hide.ng-hide-add.ng-hide-add-active {
+    transform: rotateZ(-135deg);
+}
+
+.funky-show-hide.ng-hide-remove {
+    transform: rotateY(90deg);
+    transform-origin: left;
+    transition: all 0.5s ease;
+}
+
+.funky-show-hide.ng-hide-remove.ng-hide-remove-active {
+    transform: rotateY(0);
+}
+
+.check-element {
+    /* border: 1px solid black; */
+    opacity: 1;
+    padding: 10px;
+}
+
+button:disabled,
+button[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+label {
+    font-weight: normal !important;
+}
+
+span.red_toggle_color {
+    color: red;
+  }

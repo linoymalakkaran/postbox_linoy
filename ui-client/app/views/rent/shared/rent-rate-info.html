@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="row">
+    <table class="table table-responsive submit-hidden">
+      <tbody>
+        <tr ng-repeat="item in addtionalServices">
+          <td width="30%">
+            <label>{{item.product_name | i18n}}</label>
+          </td>
+          <td>
+            <select ng-change="enableAdditionalService(item);" ng-init="item.quantity = allowedNumbers[0]" name="{{item.product_name | i18n}}"
+              class="form-control" name="ownerInfoSectionNationality" ng-options="option for option in allowedNumbers track by option"
+              ng-model="item.quantity">
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br clear="all">
+    <table class="table table-bordered table-responsive">
+      <thead class="thead-default">
+        <tr>
+          <th>{{'COL_PRODUCTNAME' | i18n}}</th>
+          <th>{{'COL_QUANTITY' | i18n}}</th>
+          <th>{{'COL_UNITPRICE' | i18n}}</th>
+          <th>{{'LBL_VAT_PERCENTAGE' | i18n}}</th>
+          <th>{{'LBL_VAT_AED' | i18n}}</th>
+          <th>{{'TXT_AEDTOTALPRICE' | i18n}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in rentDetails">
+          <td>{{item.product_name | i18n}}</td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.amount | number : 2}}</td>
+          <td>{{item.vatpercent}} %</td>
+          <td>{{item.vat | number : 2}}</td>
+          <td>{{rateInfoTotal(item.amount,item.vat) | number : 2}}</td>
+        </tr>
+      </tbody>
+      <tfoot class="thead-default">
+        <tr>
+          <td colspan="5">{{'TXT_AEDTOTALPRICE' | i18n}}</td>
+          <td>{{rentTotalPrice | number : 2}}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="row">
+    <div class="parent-div-override" ng-include="config.paymentInfoUrl"></div>
+  </div>
+</div>

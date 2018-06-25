@@ -1,0 +1,23 @@
+<div class="row" data-ng-controller="rentLandingController">
+    <div ng-if="load.translationsloaded">
+        <input type="hidden" name="lang" value="">
+        <input type="hidden" name="suid" value="">
+        <div class="row">
+            <div class="col-xs-12">
+                <br />
+                <div>
+                    <div class="ui-grid-row center-block">
+                        <ul class="list-group">
+                            <li class="list-group-item" style="text-align: center;margin-bottom:3%;border:none;">
+                                <button ng-click="reDirectToRent('P')" id="individualButton" type="button" class="btn btn-lg btn-warning">{{'BOX_INDIVIDUALBUNDLES' | i18n }}</button>
+                            </li>
+                            <li class="list-group-item" style="text-align: center;border:none;">
+                                <button ng-click="reDirectToRent('C')" id="corporateButton" type="button" class="btn btn-lg btn-warning">{{'BOX_CORPORATEBUNDLES' | i18n}}</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

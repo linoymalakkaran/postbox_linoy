@@ -1,0 +1,82 @@
+<div>
+    <div class="panel panel-primary" ng-if="isRenewable">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{'LBL_PRICE_DETAIL_RENEW' | i18n}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="single" ng-if="notConfirmationPage">
+                <div class="alert alert-info" role="alert">
+                    <strong>{{'LBL_HEADSUP' | i18n}}&nbsp;</strong>{{'LBL_TO_UPGRADE_TO_RENEW' | i18n}}
+                </div>
+            </div>
+
+            <div class="form-group single">
+                <table class="table table-bordered table-responsive">
+                    <thead class="thead-default">
+                        <tr>
+                            <th>{{'COL_PRODUCTNAME' | i18n}}</th>
+                            <th>{{'COL_QUANTITY' | i18n}}</th>
+                            <th>{{'COL_UNITPRICE' | i18n}}</th>
+                            <th>{{'LBL_VAT_PERCENTAGE' | i18n}}</th>
+                            <th>{{'LBL_VAT_AED' | i18n}}</th>
+                            <th>{{'TXT_AEDTOTALPRICE' | i18n}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in renewDetails">
+                            <td>{{item.product_name | i18n}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.amount | number : 2}}</td>
+                            <td>{{item.vatpercent}} %</td>
+                            <td>{{item.vat | number : 2}}</td>
+                            <td>{{rateInfoTotal(item.amount,item.vat) | number : 2}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot class="thead-default">
+                        <tr>
+                            <td colspan="5">{{'TXT_AEDTOTALPRICE' | i18n}}</td>
+                            <td>{{renewTotalPrice | number : 2}}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{'LBL_UPGRADE_PRICE_LIST' | i18n}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group single">
+                <table class="table table-bordered table-responsive">
+                    <thead class="thead-default">
+                        <tr>
+                            <th>{{'COL_PRODUCTNAME' | i18n}}</th>
+                            <th>{{'COL_QUANTITY' | i18n}}</th>
+                            <th>{{'COL_UNITPRICE' | i18n}}</th>
+                            <th>{{'LBL_VAT_PERCENTAGE' | i18n}}</th>
+                            <th>{{'LBL_VAT_AED' | i18n}}</th>
+                            <th>{{'TXT_AEDTOTALPRICE' | i18n}}</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-striped">
+                        <tr ng-repeat="item in upgradePriceList">
+                            <td>{{item.product_name | i18n}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.amount | number : 2}}</td>
+                            <td>{{item.vatpercent}} %</td>
+                            <td>{{item.vat | number : 2}}</td>
+                            <td>{{rateInfoTotal(item.amount,item.vat) | number : 2}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot class="thead-default">
+                        <tr>
+                            <td colspan="5">{{'TXT_AEDTOTALPRICE' | i18n}}</td>
+                            <td>{{upgradeTotalPrice | number : 2}}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

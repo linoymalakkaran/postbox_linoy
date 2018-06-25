@@ -1,0 +1,257 @@
+{
+	"ACCOUNT": {
+		"ERR_MSG_INVALIDCREDENTIALS": "Invalid Credentials",
+		"MSG_LOGIN_SUCCESSFUL": "Login Successful",
+		"MSG_LOGOUT_SUCCESSFUL": "Logged Out Successfully",
+		"MSG_ACCOUNT_CREATED_SUCCESSFUL": "Account created successfully. Your credentials have been emailed to your email address.",
+		"MSG_ACCOUNT_CREATION_FAILED": "Account creation failed",
+		"MSG_LOGIN_NAME_NOT_AVAILABLE": "Login name not available",
+		"MSG_CUSTOMER_DETAILS_ERROR": "Cannot find customer information.",
+		"MSG_CREDENTIALS_EMAILED": "Your credentials have been emailed to your email address.",
+		"MSG_INVALID_ACCOUNT": "Invalid account/email address",
+		"MSG_USERNAME_AVAILABLE": "Username is available",
+		"MSG_USERNAME_UNAVAILABLE": "Username is not available",
+		"MSG_PASSWORD_CHANGED_SUCCESS": "Password changed successfully",
+		"MSG_POBOX_LINKED_SUCCESS": "The P.O. Box is now linked to your online account. Please sign out and sign in again to check this P.O.Box.",
+		"MSG_POBOX_UNLINKED_SUCCESS": "The P.O. Box has now been unlinked from your online account. Please sign out and sign in again to check this P.O.Box.",
+		"INFO_MSG_PROFILEUPDATED": "Your profile information has been updated",
+		"ERR_MSG_PROFILEUPDATEFAILED": "Profile Update failed"
+	},
+	"POBOX": {
+		"ORDERSTATUS": {
+			"X": "Expired",
+			"PAID": "Paid",
+			"CANCELLED": "Cancelled",
+			"NOT PAID": "Not Paid"
+		},
+		"MSG_POBOX_RENTAL_ORDER_PLACED": "{POBOXNUMBER} Po Box rental order has been placed.",
+		"MSG_POBOX_RENEWAL_ORDER_PLACED": "{POBOXNUMBER} Po Box renewal order has been placed.",
+		"ERR_MSG_FILE_UPLOAD": "File uploaded not correct",
+		"ERR_MSG_RESERVED_BOX": "Reserved Box",
+		"MSG_NO_AREA": "No Areas with free boxes available",
+		"MSG_NO_FREE_BOX": "No free boxes available",
+		"BUNDLE": {
+			"individual": [{
+					"id": "599",
+					"priority": "1",
+					"eservice_enabled": true,
+					"code": "MYHOME3",
+					"title": "My Home 1",
+					"delivery_type": "DOOR_DEL",
+					"category": "PERSONAL_BOXBUNDLE",
+					"price": "750.00",
+					"code_unique": "0-HOME",
+					"location_type": "HOME",
+					"type": "BUNDLE",
+					"features": [
+						"Delivering and receiving mail 1 times a week at villa doorstep*",
+						"Accessing the P.O. Box online (automated sorted ordinary mail)",
+						"“eshaar” sms notification on received registered mail, parcels and express mail",
+						"Retaining the P.O. Box number in case of change of villa location"
+					],
+					"footnote": "*This is exclusively available for villa type houses only in selected areas"
+				},
+				{
+					"id": "602",
+					"priority": "2",
+					"eservice_enabled": true,
+					"code": "MYHOME6",
+					"title": "My Home 2",
+					"delivery_type": "DOOR_DEL",
+					"category": "PERSONAL_BOXBUNDLE",
+					"price": "1250.00",
+					"code_unique": "0-HOME",
+					"location_type": "HOME",
+					"type": "BUNDLE",
+					"features": [
+						"Delivering and receiving mail 2 times a week at villa doorstep*",
+						"Accessing the P.O. Box online (automated sorted ordinary mail)",
+						"“eshaar” sms notification on received registered mail, parcels and express mail",
+						"Retaining the P.O. Box number in case of change of villa location"
+					],
+					"footnote": "*This is exclusively available for villa type houses only in selected areas"
+				},
+				{
+					"id": "598",
+					"priority": "3",
+					"eservice_enabled": false,
+					"code": "MYBUILDING",
+					"title": "My Building",
+					"delivery_type": "DOOR_DEL",
+					"category": "PERSONAL_BOXBUNDLE",
+					"price": "450.00",
+					"code_unique": "0-HOME6",
+					"location_type": "BUILDING",
+					"type": "BUNDLE",
+					"features": [
+						"Delivering mail within residential buildings.",
+						"Accessing the P.O. Box online (automated sorted ordinary mail).",
+						"Eshaar sms notification on received registered mail, parcels and express mail."
+					],
+					"footnote": ""
+				},
+				{
+					"id": "600",
+					"priority": "4",
+					"eservice_enabled": false,
+					"code": "MYZONE",
+					"title": "My Zone",
+					"delivery_type": "GEN",
+					"category": "PERSONAL_BOXBUNDLE",
+					"price": "300.00",
+					"code_unique": "2-ZONE BUNDLE",
+					"location_type": "ZONE",
+					"type": "BUNDLE",
+					"features": [
+						"Delivering mail through P.O. Box shelters located in residential and commercial areas",
+						"Accessing the P.O. Box online (automated sorted ordinary mail)",
+						"Eshaar sms notification on received registered mail, parcels and express mail."
+					],
+					"footnote": ""
+				},
+				{
+					"id": "572",
+					"priority": "5",
+					"eservice_enabled": true,
+					"code": "IN",
+					"title": "My Box",
+					"delivery_type": "GEN",
+					"category": "PERSONAL_BOXBUNDLE",
+					"price": "250.00",
+					"code_unique": "3-MYBOX",
+					"location_type": "OFFICE",
+					"type": "BUNDLE",
+					"features": [
+						"Delivering mail through P.O. Box at Post Offices.",
+						"Accessing the P.O. Box online (automated sorted ordinary mail).",
+						"Eshaar sms notification on received registered mail, parcels and express mail."
+					],
+					"footnote": ""
+				}
+			],
+			"corporate": [{
+					"id": "577",
+					"priority": "1",
+					"eservice_enabled": true,
+					"code": "GO",
+					"title": "EziMail Gold",
+					"delivery_type": "DOOR_DEL",
+					"category": "CORPORATE_BOXBUNDLE",
+					"price": "12000.00",
+					"code_unique": "2-GOLD",
+					"location_type": "OFFICE",
+					"type": "INVENTORY",
+					"features": [
+						"1 mailbag",
+						"Eshaar sms notification on received registered mail, parcels and express mail.",
+						"6 times a week mail pickup & delivery"
+					],
+					"footnote": ""
+				},
+				{
+					"id": "578",
+					"priority": "2",
+					"eservice_enabled": true,
+					"code": "SI",
+					"title": "EziMail Silver",
+					"delivery_type": "DOOR_DEL",
+					"category": "CORPORATE_BOXBUNDLE",
+					"price": "6000.00",
+					"code_unique": "1-SILVER",
+					"location_type": "OFFICE",
+					"type": "INVENTORY",
+					"features": [
+						"1 mailbag",
+						"Eshaar sms notification on received registered mail, parcels and express mail.",
+						"3 times a week mail pickup & delivery"
+					],
+					"footnote": ""
+				},
+				{
+					"id": "576",
+					"priority": "3",
+					"eservice_enabled": true,
+					"code": "BR",
+					"title": "EziMail Bronze",
+					"delivery_type": "DOOR_DEL",
+					"category": "CORPORATE_BOXBUNDLE",
+					"price": "3500.00",
+					"code_unique": "0-BRONZE",
+					"location_type": "OFFICE",
+					"type": "INVENTORY",
+					"features": [
+						"1 mailbag",
+						"Eshaar sms notification on received registered mail, parcels and express mail.",
+						"Once a week mail pickup & delivery"
+					],
+					"footnote": ""
+				},
+				{
+					"id": "571",
+					"priority": "4",
+					"eservice_enabled": true,
+					"code": "ST",
+					"title": "Standard",
+					"delivery_type": "GEN",
+					"category": "CORPORATE_BOXBUNDLE",
+					"price": "1900.00",
+					"code_unique": "STANDARD",
+					"location_type": "OFFICE",
+					"type": "INVENTORY",
+					"features": [
+						"1 mailbag",
+						"Eshaar sms notification on received registered mail, parcels and express mail."
+					],
+					"footnote": ""
+				},
+				{
+					"id": "570",
+					"priority": "5",
+					"eservice_enabled": true,
+					"code": "LI",
+					"title": "Lite",
+					"delivery_type": "GEN",
+					"category": "CORPORATE_BOXBUNDLE",
+					"price": "900.00",
+					"code_unique": "LITE",
+					"location_type": "OFFICE",
+					"type": "INVENTORY",
+					"features": [
+						"Eshaar sms notification on received registered mail, parcels and express mail."
+					],
+					"footnote": ""
+				}
+			]
+		}
+	},
+	"GENERAL": {
+		"WARN_MSG_TITLE": "Warning",
+		"WARN_MSG_DESCRIPTION": "User warning.",
+		"ERR_MSG_TITLE": "Error",
+		"ERR_MSG_DESCRIPTION": "Error in retrieving data. Please try again.",
+		"SUCCESS_MSG_TITLE": "Success",
+		"SUCCESS_MSG_DESCRIPTION": "The server has responded",
+		"ERR_MSG_COMMUNICATION": "There has been an error in communicating. Please try after sometime.",
+		"MSG_EMAIL_SENDING_FAILED": "Email sending failed",
+		"MSG_WRONG_INPUT": "Invalid data entered. Please try again",
+		"MSG_DETAILS_MISMATCH": "The details you have entered are not matching with our records. Please try again",
+		"MSG_FILE_UPLOADED": "File uploaded successfully",
+		"MSG_APP_AUTH_SUCCESS": "Application authenticated successfully",
+		"MSG_APP_AUTH_FAILED": "Application authentication failed",
+		"HEAD_OFFICE": "Emirates Post Group HQ",
+		"MSG_NO_DATA": "No Data Available",
+		"VALIDATION_MSG_TITLE": "Invalid arguments",
+		"VALIDATION_MSG_DESCRIPTION": "Input validation error",
+		"MSG_ERR_FILE_UPLOAD": "File upload failed",
+		"FILE_NOT_FOUND": "File not found"
+	},
+	"LANGUAGES": [{
+			"id": "ar",
+			"name": "لعربية"
+		},
+		{
+			"id": "en",
+			"name": "English"
+		}
+	]
+}

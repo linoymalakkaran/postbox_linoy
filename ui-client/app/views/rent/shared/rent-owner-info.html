@@ -1,0 +1,277 @@
+<div>
+  <div ng-if="isCorporate" class="row">
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">{{'LBL_REQUESTOR_INFO' | i18n}}</legend>
+      <div class="col-xs-12 col-sm-12 form-group">
+        <select class="form-control" required name="LBL_REQUESTOR_INFO___LBL_SELECT_REQUESTOR" ng-model="model.requestorType">
+          <option value="">--- {{'LBL_SELECT_REQUESTOR' | i18n}} ---</option>
+          <option value="LBL_OWNER">{{'TXT_IAM_THE_OWNER' | i18n}}</option>
+          <option value="LBL_AGENT">{{'TXT_IAM_THE_AGENT' | i18n}}</option>
+        </select>
+      </div>
+    </fieldset>
+  </div>
+  <div class="row">
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">{{'LBL_OWNER' | i18n}} {{'LBL_INFO' | i18n}}</legend>
+      <div class="col-xs-12 col-sm-4 form-group">
+        <label for="txtFNAME">{{'LBL_FIRSTNAME' | i18n}}
+          <span class="red_toggle_color">*</span>
+        </label>
+        <input name="LBL_FIRSTNAME" ng-disabled="smartPassLogin" required ng-model="model.firstName" type="text" class=" form-control"
+          role="textbox" aria-disabled="false" aria-readonly="false">
+      </div>
+      <div class="col-xs-12 col-sm-4 form-group">
+        <label>{{'LBL_LASTNAME' | i18n}} </label>
+        <input name="LBL_LASTNAME" ng-disabled="smartPassLogin" ng-model="model.lastName" type="text" class=" form-control" role="textbox"
+          aria-disabled="false" aria-readonly="false">
+      </div>
+      <div class="col-xs-12 col-sm-4 form-group">
+        <label>{{'LBL_NATIONALITY' | i18n}}
+          <span class="red_toggle_color">*</span>
+        </label>
+        <select required ng-disabled="smartPassLogin" class="form-control" name="LBL_NATIONALITY" id="ownerInfoSectionNationality"
+          ng-options="option.name for option in nationalities track by option.id" ng-model="model.selectedNationality">
+          <option value="">-- {{'LBL_NATIONALITY' | i18n}} --</option>
+        </select>
+      </div>
+      <div class="col-xs-12 col-sm-4 form-group">
+        <label>{{'LBL_PREFERREDLANGUAGE' | i18n}}
+          <span class="red_toggle_color">*</span>
+        </label>
+        <select required class="form-control" name="LBL_PREFERREDLANGUAGE" id="ownerInfoSectionLanguage" ng-options="option.name for option in languages track by option.id"
+          ng-model="model.selectedLanguage">
+          <option value="">-- {{'LBL_PREFERREDLANGUAGE' | i18n}} --</option>
+        </select>
+      </div>
+    </fieldset>
+  </div>
+  <div class="row" ng-if="isCorporate && (model.requestorType == 'LBL_AGENT')">
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">{{model.requestorType | i18n}} {{'LBL_INFO' | i18n}}</legend>
+      <div class="col-xs-12 col-sm-4 form-group">
+        <label for="txtFNAME">{{'LBL_FIRSTNAME' | i18n}}
+          <span class="red_toggle_color">*</span>
+        </label>
+        <input name="LBL_FIRSTNAME" ng-disabled="smartPassLogin" required ng-model="model.agent.firstName" type="text" class=" form-control"
+          role="textbox" aria-disabled="false" aria-readonly="false">
+      </div>
+      <div class="col-xs-12 col-sm-4 form-group">
+        <label>{{'LBL_LASTNAME' | i18n}} </label>
+        <input name="LBL_LASTNAME" ng-disabled="smartPassLogin" ng-model="model.agent.lastName" type="text" class=" form-control"
+          role="textbox" aria-disabled="false" aria-readonly="false">
+      </div>
+      <div class="col-xs-12 col-sm-4 form-group">
+        <label>{{'LBL_NATIONALITY' | i18n}}
+          <span class="red_toggle_color">*</span>
+        </label>
+        <select required ng-disabled="smartPassLogin" class="form-control" name="LBL_NATIONALITY" id="ownerInfoSectionNationality"
+          ng-options="option.name for option in nationalities track by option.id" ng-model="model.agent.selectedNationality">
+          <option value="">-- {{'LBL_NATIONALITY' | i18n}} --</option>
+        </select>
+      </div>
+      <div class="col-xs-12 col-sm-4 form-group">
+        <label>{{'LBL_PREFERREDLANGUAGE' | i18n}}
+          <span class="red_toggle_color">*</span>
+        </label>
+        <select required class="form-control" name="LBL_PREFERREDLANGUAGE" id="ownerInfoSectionLanguage" ng-options="option.name for option in languages track by option.id"
+          ng-model="model.agent.selectedLanguage">
+          <option value="">-- {{'LBL_PREFERREDLANGUAGE' | i18n}} --</option>
+        </select>
+      </div>
+    </fieldset>
+  </div>
+  <div class="row" ng-if="model.selectedNationality.id == 'ARE' && model.selectedNationality.id != null">
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">{{model.requestorType | i18n}} {{'LBL_FAMILY_BOOK' | i18n}}</legend>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label>{{'LBL_FAMILY_BOOK_NUMBER' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <input required ng-disabled="smartPassLogin" name="LBL_FAMILY_BOOK___LBL_FAMILYNUMBER" ng-model="model.familyNumber" type="text"
+            title="LBL_FAMILY_BOOK_NUMBER" class="form-control" role="textbox" aria-disabled="false" aria-readonly="false">
+        </div>
+        <div ng-if="false" class="col-xs-12 col-sm-4 form-group">
+          <label>{{'LBL_EDBARAH_NUMBER' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <input required ng-disabled="smartPassLogin" name="LBL_FAMILY_BOOK___LBL_EDBARAH_NUMBER" ng-model="model.edbarahNumber" type="text"
+            title="LBL_EDBARAH_NUMBER" class="form-control" role="textbox" aria-disabled="false" aria-readonly="false">
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="row">
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">{{model.requestorType | i18n}} {{'SUBSEC_EIDCARDINFO' | i18n}}</legend>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label for="input requiredEIDAID">{{'LBL_EIDANUMBER' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <input required ng-disabled="smartPassLogin" name="SUBSEC_EIDCARDINFO___LBL_EIDANUMBER" required ng-model="model.emiratesId"
+            type="text" ng-maxlength="30" title="Emirates ID" class=" form-control" role="textbox" aria-disabled="false" aria-readonly="false">
+        </div>
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label for="input emiratesIdExpiryDate">{{'LBL_CARDEXPIRYDATE' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <datepicker date-format="dd-MM-yyyy">
+            <input ng-pattern="datePattern" required ng-disabled="smartPassLogin" name="SUBSEC_EIDCARDINFO___LBL_CARDEXPIRYDATE" required
+              ng-model="model.emirtesIdExpiryDate" type="text" title="{{'LBL_CARDEXPIRYDATE' | i18n}}" class="form-control"
+              role="textbox" aria-disabled="false" aria-readonly="false">
+          </datepicker>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="row">
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">{{model.requestorType | i18n}} {{'SUBSEC_PASSPORTINFO' | i18n}}</legend>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label>{{'TXT_PASSPORTNUMBER' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <input name="SUBSEC_PASSPORTINFO___TXT_PASSPORTNUMBER" required ng-disabled="smartPassLogin" ng-model="model.passportNo"
+            type="text" class="form-control" role="textbox" aria-disabled="false" aria-readonly="false">
+        </div>
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label>{{'LBL_PASSPORTISSUEDATE' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <datepicker date-format="dd-MM-yyyy">
+            <input ng-pattern="datePattern" required ng-disabled="smartPassLogin" ng-model="model.passportIssueDate" title="{{'LBL_PASSPORTISSUEDATE' | i18n}}"
+              name="SUBSEC_PASSPORTINFO___LBL_PASSPORTISSUEDATE" class="form-control" role="textbox" aria-disabled="false"
+              aria-readonly="false">
+          </datepicker>
+        </div>
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label>{{'LBL_PASSPORTEXPIRYDATE' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <datepicker date-format="dd-MM-yyyy">
+            <input ng-pattern="datePattern" required ng-disabled="smartPassLogin" ng-model="model.passportExpiryDate" title="{{'LBL_PASSPORTEXPIRYDATE' | i18n}}"
+              name="SUBSEC_PASSPORTINFO___LBL_PASSPORTEXPIRYDATE" class="form-control" role="textbox" aria-disabled="false"
+              aria-readonly="false">
+          </datepicker>
+        </div>
+        <div ng-if="model.selectedNationality.id == 'ARE' && model.selectedNationality.id != null">
+          <div class="col-xs-12 col-sm-4 form-group">
+            <label>{{'LBL_UNIFIED_NUMBER' | i18n}}
+              <span class="red_toggle_color">*</span>
+            </label>
+            <input name="SUBSEC_PASSPORTINFO___LBL_UNIFIED_NUMBER" title="LBL_UNIFIED_NUMBER" required ng-disabled="smartPassLogin" ng-model="model.unifiedNumber"
+              type="text" class="form-control" role="textbox" aria-disabled="false" aria-readonly="false">
+          </div>
+          <div class="col-xs-12 col-sm-4 form-group">
+            <label>{{'LBL_IDBARAH_NUMBER' | i18n}}
+              <span class="red_toggle_color">*</span>
+            </label>
+            <input name="SUBSEC_PASSPORTINFO___LBL_IDBARAH_NUMBER" title="LBL_IDBARAH_NUMBER" ng-disabled="smartPassLogin" required ng-model="model.edbarahNumber"
+              type="text" class="form-control" role="textbox" aria-disabled="false" aria-readonly="false">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div ng-if="false" class="row" ng-if="model.selectedNationality.id != 'ARE' && model.selectedNationality.id != null">
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">{{model.requestorType | i18n}} {{'SUBSEC_RESIDENCYINFO' | i18n}}</legend>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label>{{'LBL_VISANUMBER' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <input required ng-disabled="smartPassLogin" ng-model="model.visaNo" type="text" title="{{'LBL_VISANUMBER' | i18n}}" class=" form-control"
+            name="LBL_VISANUMBER" role="textbox" aria-disabled="false" aria-readonly="false">
+        </div>
+        <div class="col-xs-12 col-sm-4 form-group" ng-if="false">
+          <label>{{'LBL_VISAISSUEPLACE' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <input required ng-model="model.visaPlaceOfIssue" type="text" title="{{'LBL_VISA_PLACE_OF_ISSUE' | i18n}}" name="SUBSEC_RESIDENCYINFO___LBL_VISAISSUEPLACE"
+            class="form-control" role="textbox" aria-disabled="false" aria-readonly="false">
+        </div>
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label>{{'LBL_VISAEXPIRYDATE' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <datepicker date-format="dd-MM-yyyy">
+            <input required ng-disabled="smartPassLogin" ng-pattern="datePattern" ng-model="model.visaExpiryDate" type="text" title="Visa Expiry Date"
+              name="SUBSEC_RESIDENCYINFO___LBL_VISAEXPIRYDATE" class="form-control" role="textbox" aria-disabled="false" aria-readonly="false">
+          </datepicker>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="row">
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">{{'LBL_CONTACTADDRESS' | i18n}}</legend>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label>{{'LBL_DELIVERYCONTACTPHONE' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <input name="LBL_CONTACTADDRESS___LBL_DELIVERYCONTACTPHONE" required ng-model="model.mobile" type="text" class="form-control"
+            role="textbox" aria-disabled="false" aria-readonly="false">
+        </div>
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label>{{'LBL_ADDRESSEMAIL' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <input name="LBL_ADDRESSEMAIL" ng-pattern="emailPattern" required ng-model="model.email" type="text" class=" form-control"
+            role="textbox" aria-disabled="false" aria-readonly="false">
+        </div>
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label>{{'LBL_ADDRESSBLDGNAME' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <input required name="LBL_ADDRESSBLDGNAME" ng-model="model.building" type="text" title="Building" class=" form-control" role="textbox"
+            aria-disabled="false" aria-readonly="false">
+        </div>
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label>{{'LBL_TRADELICENSEEMIRATE' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <select required class="form-control" name="LBL_TRADELICENSEEMIRATE" id="LBL_TRADELICENSEEMIRATE" ng-options="option.name | i18n for option in emiratesList track by option.id"
+            ng-model="model.selectedEmirate">
+            <option value="">-- {{'TXT_SELECTEMIRATE' | i18n}} --</option>
+          </select>
+        </div>
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label>{{'LBL_ADDRESSAREA' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <input required type="text" class="form-control" name="LBL_ADDRESSAREA" id="ownerInfoSectionArea" ng-model="model.area">
+        </div>
+        <div class="col-xs-12 col-sm-4 form-group">
+          <label>{{'LBL_ADDRESSLANDMARK' | i18n}}
+            <span class="red_toggle_color">*</span>
+          </label>
+          <textarea name="LBL_ADDRESSLANDMARK" required ng-model="model.landMark" cols="20" rows="3" title="Landmark" class="form-control"
+            role="textbox" aria-disabled="false" aria-readonly="false" aria-multiline="true"></textarea>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div ng-if="isCorporate" class="row">
+    <div ng-include="template.tradeLicenseUrl"></div>
+  </div>
+  <div ng-if="isCorporate" class="row">
+    <div ng-include="template.companyInfoUrl"></div>
+  </div>
+  <div ng-if="isCorporate" class="row">
+    <div ng-include="template.attachmentUrl"></div>
+  </div>
+  <div ng-if="showAccountSegment" class="row">
+    <div ng-include="template.onlineAccountInfoUrl"></div>
+  </div>
+  <div class="row">
+    <div class="parent-div-override" ng-include="config.billingInfoUrl"></div>
+  </div>
+  <div class="row">
+    <div class="parent-div-override" ng-include="config.surveyUrl"></div>
+  </div>
+</div>

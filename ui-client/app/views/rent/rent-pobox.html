@@ -1,0 +1,23 @@
+<div>
+    <div ng-controller="rentController" class="form_wrap">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row mypobox-panel-heading-row">
+                    <div class="col-xs-4">
+                        <span ng-click="isUpgradeSectionvisible = !isUpgradeSectionvisible; backbutton = false;" class="mypobox-back" ng-show="backbutton">
+                            <i class="icon icon-chevron-left" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="col-xs-4 mypobox-panel-heading-text">
+                        <span>{{'HDR_' + selectedBundle.key_bundleid + '_FORM' | i18n}}</span>
+                    </div>
+                    <div class="col-xs-4">
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body mypobox-panel-body">
+                <tab-form></tab-form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="row" style="font-size: 12px;">
+        <h1 class="pageTitle">
+            <span id="lblPageTitle">{{ 'LBL_SYS_MSG' | i18n }}</span>
+        </h1>
+    </div>
+    <div id="ContentPlaceHolder1_divUnauthorized" class="unauthorizedMsgHolder">
+        <div class="flipDir">
+            <div class="unauthorizedIcon"></div>
+            <div class="alertContent">
+                <span id="ContentPlaceHolder1_Label29" class="unauthorizedTitle"></span>
+                <div>
+                    <span id="ContentPlaceHolder1_lblAuthMsg">
+                        <b>{{ 'LBL_NO_PERMISSION' | i18n }}</b>
+                    </span>
+                </div>
+                <br>
+                <div>
+                    <span id="ContentPlaceHolder1_lblAuthMsg">
+                        <b>{{ 'LBL_MISSING_SPASS_INFO' | i18n }}</b>
+                    </span>
+                </div>
+                <div id="missingFieldsSection">
+                    <ol>
+                        <li ng-repeat="item in missingFields">{{item}}</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="clearFix"></div>
+        </div>
+    </div>
+</div>

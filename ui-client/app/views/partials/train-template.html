@@ -1,0 +1,53 @@
+<div id="form-wizard-3" class="form-wizard">
+    <ul>
+        <li ng-repeat="item in pageSections  track by item.tabHeaderSection.step" class="{{item.tabHeaderSection.active}}">
+            <a class="nopointerevent" ng-href="{{item.tabHeaderSection.href}}" id="{{item.tabHeaderSection.id}}" target="_self" data-toggle="tab">
+                <label class="wizard-step">{{item.tabHeaderSection.step}}</label>
+                <span class="wizard-description">
+                    {{item.tabHeaderSection.title |i18n}}
+                </span>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <p>
+            <label class="pull-right fright" style="color: red;">
+                {{'LBL_REQUIRED_MESSAGE' |i18n}}
+            </label>
+            <br>
+        </p>
+        <div ng-repeat="page in pageSections track by page.tabContentSection.step" class="tab-pane {{page.tabContentSection.active}}"
+            id="{{page.tabContentSection.id}}">
+            <form novalidate class="form-horizontal" name="{{page.tabContentSection.id}}" ng-submit="FormTabSubmit(this, page.tabGeneral.submitButtonNextTabId,page.tabContentSection.id)"
+                novalidate>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="badge">{{page.tabHeaderSection.step}} </span>{{page.tabHeaderSection.title |i18n}}</div>
+                    <div class="panel-body">
+                        <div ng-include="page.tabContentSection.template"></div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="">
+                                <div class="pull-left fleft" ng-if="page.tabGeneral.previousButtonClick != ''">
+                                    <button type="button" class="btn btn-md btn-warning" ng-click="this[page.tabGeneral.previousButtonClick](page.tabGeneral.previousButtonParams)">{{page.tabGeneral.previousButtonName |i18n}}</button>
+                                </div>
+                            </div>
+                            <div class="" ng-if="page.tabGeneral.nextButtonClick == ''">
+                                <div class="pull-right fright">
+                                    <button type="submit" class="btn btn-md btn-primary">{{page.tabGeneral.nextButtonName |i18n}}</button>
+                                </div>
+                            </div>
+                            <div class="" ng-if="page.tabGeneral.nextButtonClick != ''">
+                                <div class="pull-right fright">
+                                    <button type="button" ng-click="this[page.tabGeneral.nextButtonClick]()" class="btn btn-md btn-primary">{{page.tabGeneral.nextButtonName |i18n}}</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

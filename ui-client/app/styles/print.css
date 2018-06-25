@@ -1,0 +1,27 @@
+@media print {
+    .nav-bar-row {
+        display: none;
+    }
+    .mypobox-back {
+        display: none;
+    }
+    #mypobox-print-button-row {
+        display: none;
+    }
+
+    .mypobox-receipt-title-panel {
+        display: none;
+    }
+    .mypobox-receipt-body-panel {
+        border: none;
+    }
+
+    .fa-chevron-down {
+        display: none;
+    }
+
+    .mypobox-print-page-header {
+        text-align: center;
+        display: block !important;
+    }
+}

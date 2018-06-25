@@ -1,0 +1,38 @@
+<div class="row">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">{{'SEC_COMPANYADDRESS' | i18n}}</legend>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label>{{'LBL_DELIVERYCONTACTPHONE' | i18n}} *</label>
+                <input name="SEC_COMPANYADDRESS___LBL_DELIVERYCONTACTPHONE" required ng-model="model.companyInfo.phone" type="text" class="form-control"
+                    role="textbox">
+            </div>
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label>{{'LBL_ADDRESSEMAIL' | i18n}} *</label>
+                <input name="SEC_COMPANYADDRESS___LBL_ADDRESSEMAIL" ng-pattern="emailPattern" required ng-model="model.companyInfo.email"
+                    type="text" class="form-control" role="textbox">
+            </div>
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label>{{'LBL_ADDRESSBLDGNAME' | i18n}} *</label>
+                <input required name="SEC_COMPANYADDRESS___LBL_ADDRESSBLDGNAME" ng-model="model.companyInfo.building" type="text" title="{{'LBL_ADDRESSBLDGNAME' | i18n}}"
+                    class="form-control" role="textbox">
+            </div>
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label>{{'LBL_FLAT_NUMBER' | i18n}} *</label>
+                <input required name="SEC_COMPANYADDRESS___LBL_FLAT_NUMBER" ng-model="model.companyInfo.flatNo" type="text" title="FlatNo"
+                    class=" form-control" role="textbox">
+            </div>
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label>{{'LBL_ADDRESSAREA' | i18n}} *</label>
+                <input required type="text" class="form-control" name="SEC_COMPANYADDRESS___LBL_ADDRESSAREA" ng-model="model.companyInfo.area">
+            </div>
+            <div class="row signlerowMargin">
+                <div class="col-xs-12 col-sm-12 form-group">
+                    <label>{{'LBL_ADDRESSLANDMARK' | i18n}} *</label>
+                    <textarea name="SEC_COMPANYADDRESS___LBL_ADDRESSLANDMARK" required ng-model="model.companyInfo.landMark" cols="20" rows="3"
+                        title="Landmark" class="form-control" role="textbox" aria-multiline="true"></textarea>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

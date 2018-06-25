@@ -1,0 +1,14 @@
+<div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"> {{'LBL_BILLING_ADDRESS' | i18n}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="parent-div-override" ng-include="config.billingInfoUrl"></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="parent-div-override" ng-include="config.paymentInfoUrl"></div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div>
+    <div ng-include="config.navUrl"></div>
+    <div ng-controller="PaymentHistoryController" class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row mypobox-panel-heading-row">
+                <div class="col-xs-4">
+                    <span class="mypobox-back" ng-if="backbutton">
+                        <i class="icon icon-chevron-left" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="col-xs-4 mypobox-panel-heading-text">
+                    <span>{{ 'HDR_PAYMENTHISTORY' | i18n }}</span>
+                </div>
+                <div class="col-xs-4">
+                </div>
+            </div>
+        </div>
+        <div class="panel-body mypobox-panel-body">
+            <div id="no_orders_message" ng-if="request_status !== 'IN_PROGRESS' && !payment_history.length">
+                <span>There are no payments made.</span>
+            </div>
+            <table class="table table-striped table-hover mypobox-table" ng-if="request_status !== 'IN_PROGRESS' && payment_history.length">
+                <tr class="mypobox-table-header">
+                    <th>{{'LBL_TRANSACTION' | i18n}}</th>
+                    <th ng-class="(direction === 'rtl')?'text-left' : 'text-right'">{{'LBL_AMOUNT' | i18n}}</th>
+                </tr>
+                <tr ng-repeat="payment in payment_history track by $index">
+                    <td ng-attr-align="{{(direction === 'rtl') ? 'right' : 'left'}}" class="">
+                        <div class="mypobox-table-div">
+                            <span class="mypobox-txn-number">
+                                <a ui-sref="payment_receipt({previous_view:'payment_history',
+                                payment_id:{{payment.pkid}}})">
+                                    {{ 'COL_TXNNUMBER' | i18n }} : {{payment.transaction_number}}
+                                </a>
+                            </span>
+                            <span class="mypobox-label-parent">
+                                <span class="mypobox-order-date">{{payment.payment_ref_identifier}}</span>
+                            </span>
+                        </div>
+                    </td>
+                    <td ng-attr-align="{{(direction === 'rtl') ? 'left' : 'right'}}" class="">
+                        <div ng-class="(direction === 'rtl')?'mypobox-table-div pull-left' :
+                    'mypobox-table-div pull-right'">
+                            <span class="mypobox-order-date">
+                                {{payment.payment_date}}
+                            </span>
+                        </div>
+                        <br/>
+                        <div ng-class="(direction === 'rtl')?'mypobox-table-div pull-left' :
+                    'mypobox-table-div pull-right'">
+                            <span class="mypobox-amount-field">
+                                {{ +payment.paid_amount | currency:'':2 }}
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

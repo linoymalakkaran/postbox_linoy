@@ -1,0 +1,34 @@
+<div class="row" ng-form name="{{nametext}}">
+  <fieldset class="scheduler-border">
+    <legend class="scheduler-border">{{filetext |i18n}}</legend>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 form-group submit-hidden">
+      <div style="cursor: pointer;" class="button" ngf-select="uploadFile({attachment: $file, model: ngModel})" accept="application/msword,image/*,text/plain, application/pdf">
+        <span aria-hidden="true">
+          <i class="fa fa-folder-open"></i>
+          {{'Choose File' |i18n}}
+        </span>
+        <span class="red_toggle_color" ng-show="required">*</span>
+      </div>
+      <input type="hidden" name="{{nametext}}" ng-model="ngModel.filename" ng-required="required" />
+      <!-- <input type="hidden" name="{{nametext}}" ng-model="ngModel.filename" required /> -->
+    </div>
+    <div ng-if="ngModel.maxSizeMsg != ''" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-group">
+      <span style="color:red;">{{ngModel.maxSizeMsg}}</span>
+    </div>
+    <div ng-if="ngModel.invalidMsg != ''" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-group">
+      <span style="color:red;">{{ngModel.invalidMsg}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-group" ng-show="ngModel.uploaded">
+      <span>{{ngModel.filename}}</span>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 form-group" ng-show="ngModel.uploaded">
+      <span>{{ngModel.size}} KB</span>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 form-group submit-hidden" ng-show="ngModel.uploaded">
+      <button type="button" class="btn btn-danger btn-xs" ng-click="deleteFile({model: ngModel})">
+        <span class="fa fa-trash"></span> {{'TXT_REMOVE' | i18n}}
+        <!--<span class="fa fa-trash"></span>-->
+      </button>
+    </div>
+  </fieldset>
+</div>

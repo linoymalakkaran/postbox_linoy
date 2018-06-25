@@ -1,0 +1,43 @@
+<div>
+    <div class="col-xs-12 col-sm-6 form-group">
+        <label>{{'TXT_SELECTEMIRATE' |i18n}}
+            <span class="red_toggle_color">*</span>
+        </label>
+        <select required class="form-control" name="TXT_SELECTEMIRATE" id="poboxSectionEmirate" ng-options="option.name for option in emirates track by option.id"
+            ng-change="getFreeBoxAreasInEmirate();" ng-model="model.selectedEmirate">
+            <option value="">-- {{'TXT_SELECTEMIRATE' | i18n}} --</option>
+        </select>
+    </div>
+    <div style="margin-top:2%;" ng-show="noArea" class="col-xs-12 col-sm-6 form-group">
+        <label>{{'MSG_NOFREEBOXLOCATIONS' | i18n}}</label>
+    </div>
+    <div ng-show="model.selectedEmirate.id != null && areas.length > 0" class="col-xs-12 col-sm-6 form-group">
+        <label>{{'TXT_SELECTAREA' | i18n}}
+            <span class="red_toggle_color">*</span>
+        </label>
+        <select ng-change="getBoxesInArea();" ng-model="model.selectedArea" required class="form-control">
+            <option value="">-- {{'TXT_SELECTAREA' | i18n}} --</option>
+            <option ng-repeat="option in areas" value="{{option}}">{{option.name}}</option>
+            {{operator.name}}
+            </option>
+        </select>
+    </div>
+    <div style="margin-top:2%;" ng-show="noBox" class="col-xs-12 col-sm-6 form-group">
+        <label>{{'MSG_NOFREEBOXES' | i18n}}</label>
+    </div>
+    <div ng-show="model.selectedArea.id != '' && boxes.length > 0" class="col-xs-12
+        col-sm-6 form-group">
+        <div>
+            <label>{{'TXT_SELECTBOX' | i18n}}
+                <span class="red_toggle_color">*</span>
+            </label>
+        </div>
+        <div>
+            <select required class="form-control" name="TXT_SELECTBOX" id="poboxSectionBox" ng-model="model.selectedBox">
+                <option value="">-- {{'TXT_SELECTBOX' | i18n}} --</option>
+                <option ng-repeat="option in boxes track by option.box_number" value="{{option}}">{{option.box_number}}</option>
+            </select>
+        </div>
+    </div>
+    <br clear="all">
+</div>

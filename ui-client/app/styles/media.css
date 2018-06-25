@@ -1,0 +1,13 @@
+@media screen and (max-width: 600px)
+{
+    .wizard-description{
+        display: none;
+    }
+    .container, .container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+    }
+    .form-wizard .tab-content .tab-pane {
+            padding: 0px 0px 0;
+    }
+}

@@ -1,0 +1,259 @@
+{
+    "ACCOUNT": {
+        "ERR_MSG_INVALIDCREDENTIALS": "البيانات غير صحيحة",
+        "MSG_LOGIN_SUCCESSFUL": "التم تسجيل الدخول بنجاح",
+        "MSG_LOGOUT_SUCCESSFUL": "تم تسجيل الخروج بنجاح",
+        "MSG_ACCOUNT_CREATED_SUCCESSFUL": "حساب تم إنشاؤه بنجاح. تم اعتمادك عبر البريد الالكتروني إلى عنوان البريد الإلكتروني الخاص بك.",
+        "MSG_ACCOUNT_CREATION_FAILED": "فشل في إنشاء الحساب",
+        "MSG_LOGIN_NAME_NOT_AVAILABLE": "إسم المستخدم غير موجود",
+        "MSG_CUSTOMER_DETAILS_ERROR": "لا يمكن إيجاد بيانات العميل / العميلة",
+        "MSG_CREDENTIALS_EMAILED": "تم اعتمادك عبر البريد الالكتروني من خلال عنوان البريد الإلكتروني الخاص بك.",
+        "MSG_INVALID_ACCOUNT": "حساب غير صالح",
+        "MSG_USERNAME_AVAILABLE": "إسم المستخدم مستعمل",
+        "MSG_USERNAME_UNAVAILABLE": "إسم المستخدم غير مستعمل",
+        "MSG_PASSWORD_CHANGED_SUCCESS": "تم تغيير كلمة المرور بنجاح",
+        "MSG_POBOX_LINKED_SUCCESS": "لقم تم ربط صندوق البريد إلى حسابك الإلكتروني.  يرجى تسجيل الخروج وتسجيل الدخول مرة أخرى لمشاهدة تفاصيل هذا صندوق البريد.",
+        "MSG_POBOX_UNLINKED_SUCCESS": "The P.O. Box has now been unlinked from your online account. Please sign out and sign in again to check this P.O.Box.",
+        "INFO_MSG_PROFILEUPDATED": "تم تحديث بيانات ملفك الشخصي",
+        "ERR_MSG_PROFILEUPDATEFAILED": "Profile Update failed"
+    },
+    "POBOX": {
+        "ORDERSTATUS": {
+            "X": "منتهي الصلاحية",
+            "PAID": "تم الدفع",
+            "CANCELLED": "تم الإلغاء",
+            "NOT PAID": "لم يتم الدفع"
+        },
+        "MSG_POBOX_RENTAL_ORDER_PLACED": "تم تقديم طلب تجديد صندوق البريد {POBOXNUMBER} ",
+        "MSG_POBOX_RENEWAL_ORDER_PLACED": "تم تقديم طلب تجديد صندوق البريد {POBOXNUMBER}",
+        "ERR_MSG_FILE_UPLOAD": "الملف المرففق غير صحيح",
+        "ERR_MSG_RESERVED_BOX": "صندوق بريد تم حجزه مسبقا",
+        "MSG_NO_AREA": "صناديق البريد غير متوفرة ",
+        "MSG_NO_FREE_BOX": "صناديق البريد غير متوفرة",
+        "BUNDLE": {
+            "individual": [{
+                    "id": "599",
+                    "priority": "1",
+                    "eservice_enabled": true,
+                    "code": "MYHOME3",
+                    "title": "منزلي 1",
+                    "delivery_type": "DOOR_DEL",
+                    "category": "PERSONAL_BOXBUNDLE",
+                    "price": "750.00",
+                    "code_unique": "0-HOME",
+                    "location_type": "HOME",
+                    "type": "BUNDLE",
+                    "features": [
+                        "استلام وتسليم الرسائل 1 مرات أسبوعياً من خلال صندوق بريد خاص أمام المنزل*",
+                        " تفقد الرسائل بالصندوق عبر شبكة الإنترنت (المفروزة آلياً)",
+                        "خدمة إشعار 'الرسائل النصية القصيرة' للإعلام عن وصول البريد المسجل و الطرود و البريد الممتاز",
+                        "الاحتفاظ برقم الصندوق حتى في حالة تغيير عنوان السكن"
+                    ],
+                    "footnote": "هذه الخدمة متوفرة للفلل فقط وفي بعض المناطق المحددة*"
+                },
+                {
+                    "id": "602",
+                    "priority": "2",
+                    "eservice_enabled": true,
+                    "code": "MYHOME6",
+                    "title": "منزلي 2",
+                    "delivery_type": "DOOR_DEL",
+                    "category": "PERSONAL_BOXBUNDLE",
+                    "price": "1250.00",
+                    "code_unique": "0-HOME",
+                    "location_type": "HOME",
+                    "type": "BUNDLE",
+                    "features": [
+                        "استلام وتسليم الرسائل 2 مرات أسبوعياً من خلال صندوق بريد خاص أمام المنزل*",
+                        " تفقد الرسائل بالصندوق عبر شبكة الإنترنت (المفروزة آلياً)",
+                        "خدمة إشعار 'الرسائل النصية القصيرة' للإعلام عن وصول البريد المسجل و الطرود و البريد الممتاز",
+                        "الاحتفاظ برقم الصندوق حتى في حالة تغيير عنوان السكن"
+                    ],
+                    "footnote": "هذه الخدمة متوفرة للفلل فقط وفي بعض المناطق المحددة*"
+                },
+                {
+                    "id": "598",
+                    "priority": "3",
+                    "eservice_enabled": false,
+                    "code": "MYBUILDING",
+                    "title": "بنايتي",
+                    "delivery_type": "DOOR_DEL",
+                    "category": "PERSONAL_BOXBUNDLE",
+                    "price": "450.00",
+                    "code_unique": "0-HOME6",
+                    "location_type": "BUILDING",
+                    "type": "BUNDLE",
+                    "features": [
+                        "توصيل الرسائل من خلال صناديق بريدية في المباني السكنية",
+                        "تفقد الرسائل بالصندوق عبر شبكة الإنترنت (المفروزة آلياً).",
+                        "خدمة إشعار 'الرسائل النصية القصيرة'' للإعلام عن وصول البريد المسجل و الطرود و البريد الممتاز"
+                    ],
+                    "footnote": ""
+                },
+                {
+                    "id": "600",
+                    "priority": "4",
+                    "eservice_enabled": false,
+                    "code": "MYZONE",
+                    "title": "منطقتي",
+                    "delivery_type": "GEN",
+                    "category": "PERSONAL_BOXBUNDLE",
+                    "price": "300.00",
+                    "code_unique": "2-ZONE BUNDLE",
+                    "location_type": "ZONE",
+                    "type": "BUNDLE",
+                    "features": [
+                        "توصيل الرسائل من خلال مجمع صناديق بريدية بالمناطق السكنية والتجارية",
+                        "تفقد الرسائل بالصندوق عبر شبكة الإنترنت (المفروزة آلياً).",
+                        "خدمة إشعار ",
+                        " الرسائل النصية القصيرة ' للإعلام عن وصول البريد المسجل و الطرود و البريد الممتاز'"
+                    ],
+                    "footnote": ""
+                },
+                {
+                    "id": "572",
+                    "priority": "5",
+                    "eservice_enabled": true,
+                    "code": "IN",
+                    "title": "صندوقي",
+                    "delivery_type": "GEN",
+                    "category": "PERSONAL_BOXBUNDLE",
+                    "price": "250.00",
+                    "code_unique": "3-MYBOX",
+                    "location_type": "OFFICE",
+                    "type": "BUNDLE",
+                    "features": [
+                        "توصيل الرسائل من خلال الصناديق البريدية المتواجدة في مكاتب البريد",
+                        "تفقد الرسائل بالصندوق عبر شبكة الإنترنت (المفروزة آلياً",
+                        "خدمة ",
+                        " إشعا  الرسائل النصية القصيرة للإعلام عن وصول البريد المسجل و الطرود و البريد الممتاز"
+                    ],
+                    "footnote": ""
+                }
+            ],
+            "corporate": [{
+                    "id": "577",
+                    "priority": "1",
+                    "eservice_enabled": true,
+                    "code": "GO",
+                    "title": "إيزي ميل ذهبي",
+                    "delivery_type": "DOOR_DEL",
+                    "category": "CORPORATE_BOXBUNDLE",
+                    "price": "12000.00",
+                    "code_unique": "2-GOLD",
+                    "location_type": "OFFICE",
+                    "type": "INVENTORY",
+                    "features": [
+                        "كيس بريدي",
+                        "خدمة إشعار",
+                        "استلام وتسليم المواد البريدية ست مرات أسبوعياً"
+                    ],
+                    "footnote": ""
+                },
+                {
+                    "id": "578",
+                    "priority": "2",
+                    "eservice_enabled": true,
+                    "code": "SI",
+                    "title": "إيزي ميل فضي",
+                    "delivery_type": "DOOR_DEL",
+                    "category": "CORPORATE_BOXBUNDLE",
+                    "price": "6000.00",
+                    "code_unique": "1-SILVER",
+                    "location_type": "OFFICE",
+                    "type": "INVENTORY",
+                    "features": [
+                        "كيس بريدي",
+                        "خدمة إشعا",
+                        "استلام وتسليم المواد البريدية ثلاث مرات أسبوعياً"
+                    ],
+                    "footnote": ""
+                },
+                {
+                    "id": "576",
+                    "priority": "3",
+                    "eservice_enabled": true,
+                    "code": "BR",
+                    "title": "إيزي ميل برونزي",
+                    "delivery_type": "DOOR_DEL",
+                    "category": "CORPORATE_BOXBUNDLE",
+                    "price": "3500.00",
+                    "code_unique": "0-BRONZE",
+                    "location_type": "OFFICE",
+                    "type": "INVENTORY",
+                    "features": [
+                        "كيس بريدي",
+                        "خدمة إشعار",
+                        "استلام وتسليم المواد البريدية مرة واحدة أسبوعياً"
+                    ],
+                    "footnote": ""
+                },
+                {
+                    "id": "571",
+                    "priority": "4",
+                    "eservice_enabled": true,
+                    "code": "ST",
+                    "title": "صندوق بريد إستاندر د",
+                    "delivery_type": "GEN",
+                    "category": "CORPORATE_BOXBUNDLE",
+                    "price": "1900.00",
+                    "code_unique": "STANDARD",
+                    "location_type": "OFFICE",
+                    "type": "INVENTORY",
+                    "features": [
+                        "كيس بريدي",
+                        "خدمة إشعار"
+                    ],
+                    "footnote": ""
+                },
+                {
+                    "id": "570",
+                    "priority": "5",
+                    "eservice_enabled": true,
+                    "code": "LI",
+                    "title": "صندوق بريد لايت",
+                    "delivery_type": "GEN",
+                    "category": "CORPORATE_BOXBUNDLE",
+                    "price": "900.00",
+                    "code_unique": "LITE",
+                    "location_type": "OFFICE",
+                    "type": "INVENTORY",
+                    "features": [
+                        "خدمة إشعار"
+                    ],
+                    "footnote": ""
+                }
+            ]
+        }
+    },
+    "GENERAL": {
+        "WARN_MSG_TITLE": "تحذير",
+        "WARN_MSG_DESCRIPTION": "تحذير المستخدم",
+        "ERR_MSG_TITLE": "خطأ",
+        "ERR_MSG_DESCRIPTION": "خطأ في استعادة البيانات",
+        "SUCCESS_MSG_TITLE": "تم بنجاح",
+        "SUCCESS_MSG_DESCRIPTION": "تمت الإستجابة من الخادم",
+        "ERR_MSG_COMMUNICATION": "كان هناك خطأ في الاتصال.  يرجى المحاولة مرة أخرى فيما خطأ في الاتصال.  يرجى المحاولة مرة أخرى فيما بعد",
+        "MSG_EMAIL_SENDING_FAILED": "فشل في إرسال البريد الألكتروني",
+        "MSG_WRONG_INPUT": "إدخال بيانات غير صالحة. يرجى المحاولة مرة أخرى",
+        "MSG_DETAILS_MISMATCH": "التفاصيل التي أدخلتها غير متطابقة مع سجلاتنا. يرجى المحاولة مرة أخرى",
+        "MSG_FILE_UPLOADED": "تم إرفاق الملف بنجاح",
+        "MSG_APP_AUTH_SUCCESS": "تم منح الإدن للبرنامج بنجاح",
+        "MSG_APP_AUTH_FAILED": "فشل في منح الإذن للبرنامج",
+        "HEAD_OFFICE": "المكتب الرئيسي لمجموعة بريد الإمارات",
+        "MSG_NO_DATA": "لا تتوافر بيانات",
+        "VALIDATION_MSG_TITLE": "الحجج الباطلة",
+        "VALIDATION_MSG_DESCRIPTION": "خطأ التحقق من صحة المدخلات",
+        "MSG_ERR_FILE_UPLOAD": "File upload failed",
+        "FILE_NOT_FOUND": "لم يتم العثور على الملف"
+    },
+    "LANGUAGES": [{
+            "id": "ar",
+            "name": "لعربية"
+        },
+        {
+            "id": "en",
+            "name": "English"
+        }
+    ]
+}

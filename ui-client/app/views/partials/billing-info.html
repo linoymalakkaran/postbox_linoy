@@ -1,0 +1,73 @@
+<div class="row">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">
+            <label lass="checkbox-inline">
+                <input ng-change="toggleBillingAddress()" name="LBL_SAME_AS_CONTACT_ADDRESS" ng-model="model.sameAsContactAddress" type="checkbox">
+                <span>{{'LBL_BILLING_ADDR_AS_CONTACT_ADDRESS' | i18n}}</span>
+            </label>
+        </legend>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label for="txtFNAME">{{'LBL_FIRSTNAME' | i18n}}
+                    <span class="red_toggle_color">*</span>
+                </label>
+                <input name="LBL_FIRSTNAME" required ng-model="customer_name.english.first" type="text" class=" form-control">
+            </div>
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label>{{'LBL_LASTNAME' | i18n}} </label>
+                <input name="LBL_LASTNAME" ng-model="customer_name.english.last" type="text" class=" form-control">
+            </div>
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label>{{'LBL_ADDRESSEMAIL' | i18n}}
+                    <span class="red_toggle_color">*</span>
+                </label>
+                <input name="LBL_ADDRESSEMAIL" ng-pattern="emailPattern" required ng-model="customer_contact.email" type="text" class=" form-control">
+            </div>
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label>{{'LBL_DELIVERYCONTACTPHONE' | i18n}}
+                    <span class="red_toggle_color">*</span>
+                </label>
+                <input name="LBL_CONTACTADDRESS___LBL_DELIVERYCONTACTPHONE" required ng-model="customer_contact.mobile" type="text" class="form-control">
+            </div>
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label>{{'LBL_ADDRESSAREA' | i18n}}
+                    <span class="red_toggle_color">*</span>
+                </label>
+                <input required type="text" class="form-control" name="LBL_ADDRESSAREA" id="ownerInfoSectionArea" ng-model="customer_contact.area">
+            </div>
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label>{{'LBL_ADDRESSBLDGNAME' | i18n}}
+                    <span class="red_toggle_color">*</span>
+                </label>
+                <input required name="LBL_ADDRESSBLDGNAME" ng-model="customer_contact.building" type="text" title="Building" class=" form-control">
+            </div>
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label>{{'LBL_TRADELICENSEEMIRATE' | i18n}}
+                    <span class="red_toggle_color">*</span>
+                </label>
+                <select required class="form-control" name="LBL_TRADELICENSEEMIRATE" id="LBL_TRADELICENSEEMIRATE" ng-options="option.name | i18n for option in emiratesList track by option.id"
+                    ng-model="customer_contact.emirate">
+                    <option value="">-- {{'TXT_SELECTEMIRATE' | i18n}} --</option>
+                </select>
+            </div>
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label>{{'LBL_NATIONALITY' | i18n}}
+                    <span class="red_toggle_color">*</span>
+                </label>
+                <select required class="form-control" name="LBL_NATIONALITY" id="ownerInfoSectionNationality" ng-options="option.name for option in nationalities track by option.id"
+                    ng-model="customer_personalprofile.nationality">
+                    <option value="">-- {{'LBL_NATIONALITY' | i18n}} --</option>
+                </select>
+            </div>
+            <div class="col-xs-12 col-sm-4 form-group">
+                <label>{{'LBL_PREFERREDLANGUAGE' | i18n}}
+                    <span class="red_toggle_color">*</span>
+                </label>
+                <select required class="form-control" name="LBL_PREFERREDLANGUAGE" id="ownerInfoSectionLanguage" ng-options="option.name for option in languages track by option.id"
+                    ng-model="customer_personalprofile.language">
+                    <option value="">-- {{'LBL_PREFERREDLANGUAGE' | i18n}} --</option>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+</div>

@@ -1,0 +1,28 @@
+<div class="row" data-ng-controller="rentBundleController">
+    <div ng-if="load.translationsloaded">
+        <div ng-repeat="bundle in bundles">
+            <div class="col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <span class="table-cell-bold">{{bundle.title}}
+                            <span class="table-cell-bold pull-right fright badge">AED {{bundle.price}}</span>
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li ng-repeat="discription in bundle.features" class="list-group-item">
+                                <i class="fa fa-check-square-o" style="padding-left:5px;padding-right: 5px;">
+                                </i>{{discription}}*</li>
+                            <li class="list-group-item" ng-if="bundle.footnote != ''">
+                                <span style="font-style: italic;">*{{bundle.footnote}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <input ng-click="apply(bundle);" type="button" value="{{'BTN_APPLYNOW' | i18n}}" class="btn btn-warning">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

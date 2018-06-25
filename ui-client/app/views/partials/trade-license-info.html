@@ -1,0 +1,43 @@
+<div class="row">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">{{'SUBSEC_TRADELICENSEINFO' | i18n}}</legend>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 form-group">
+                <label for="txtFNAME">{{'LBL_ADDRESSCOMPANYNAME' | i18n}} *</label>
+                <input name="SUBSEC_TRADELICENSEINFO___LBL_ADDRESSCOMPANYNAME" required ng-model="model.companyName" type="text" class="form-control"
+                    role="textbox">
+            </div>
+            <div class="col-xs-12 col-sm-6 form-group">
+                <label>{{'LBL_SPONSORNAME' | i18n}} *</label>
+                <input name="SUBSEC_TRADELICENSEINFO___LBL_SPONSORNAME" required ng-model="model.sponsorName" type="text" class="form-control"
+                    role="textbox">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 form-group">
+                <label>{{'LBL_TRADELICENSENUMBER' | i18n}} *</label>
+                <input required name="SUBSEC_TRADELICENSEINFO___LBL_TRADELICENSENUMBER" ng-model="model.tradeLicenseNumber" type="text" title="{{ 'LBL_TRADELICENSENUMBER' | i18n}}"
+                    class="form-control" role="textbox">
+            </div>
+            <div class="col-xs-12 col-sm-6 form-group">
+                <label>{{'LBL_VISAISSUEPLACE' | i18n}} *</label>
+                <input required name="SUBSEC_TRADELICENSEINFO___LBL_VISAISSUEPLACE" required ng-model="model.tradeLicenseIssuePlace" type="text"
+                    title="{{ 'LBL_VISAISSUEPLACE' | i18n}}" class="form-control" role="textbox">
+            </div>
+            <div class="col-xs-12 col-sm-6 form-group">
+                <label>{{'LBL_PASSPORTISSUEDATE' | i18n}} *</label>
+                <datepicker date-format="dd-MM-yyyy">
+                    <input ng-pattern="datePattern" required name="SUBSEC_TRADELICENSEINFO___LBL_PASSPORTISSUEDATE" required ng-model="model.tradeLicenseIssueDate"
+                        type="text" title="{{'LBL_PASSPORTISSUEDATE' | i18n}}" class="form-control" role="textbox">
+                </datepicker>
+            </div>
+            <div class="col-xs-12 col-sm-6 form-group">
+                <label>{{'LBL_PASSPORTEXPIRYDATE' | i18n}} *</label>
+                <datepicker date-format="dd-MM-yyyy">
+                    <input ng-pattern="datePattern" required name="SUBSEC_TRADELICENSEINFO___LBL_PASSPORTEXPIRYDATE" required ng-model="model.tradeLicenseExpiryDate"
+                        type="text" title="{{'LBL_PASSPORTEXPIRYDATE' | i18n}}" class="form-control" role="textbox">
+                </datepicker>
+            </div>
+        </div>
+    </fieldset>
+</div>

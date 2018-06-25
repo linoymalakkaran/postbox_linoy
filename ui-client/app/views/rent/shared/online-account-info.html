@@ -1,0 +1,21 @@
+<div class="row">
+  <fieldset class="scheduler-border">
+    <legend class="scheduler-border">{{'PNLHDR_ACCOUNTINFO' | i18n}}</legend>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 form-group">
+        <label>
+          {{'LBL_LOGINNAME' | i18n}}
+          <div ng-if="loginNameChange">
+            <span ng-class="{ 'text-danger': !userNameAvailabilityMessage.isAvailable, 'text-success': userNameAvailabilityMessage.isAvailable }">{{userNameAvailabilityMessage.msg | i18n}}</span>
+          </div>
+        </label>
+        <div>
+          <input required name="LBL_LOGINNAME" ng-model="model.loginName" type="text" class=" form-control" role="textbox" aria-disabled="false"
+            aria-readonly="false">
+          <a ng-click="checkUserAvailability();" href="javascript:void(0);" class="submit-hidden accountInfoToHide" aria-label="Check Availability"
+            style="text-decoration: underline; color:#337ab7; padding-left: 2px;padding-right: 2px;" title="Check Availability">{{'INSTRUCTION_REGISTERACCOUNT' | i18n}}</a>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>

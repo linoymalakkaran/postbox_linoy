@@ -1,0 +1,211 @@
+<div>
+    <div ng-include="config.navUrl"></div>
+    <div ng-controller="OrderHistoryController" class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row mypobox-panel-heading-row">
+                <div class="col-xs-4">
+                    <span class="mypobox-back" ng-if="backbutton">
+                        <i class="icon icon-chevron-left" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="col-xs-4">
+                    <div class="mypobox-panel-heading-text">
+                        <span>{{ 'MNU_ORDER_HISTORY' | i18n }}</span>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="mypobox-checkout-div" ng-if="cart.count">
+                        <a ui-sref="payment_checkout">
+                            <button dir="ltr" class="btn btn-sm btn-success mypobox-mobile-table" title="{{'LBL_PAYMENT_CHECKOUT' | i18n}}">
+                                <i class="icon icon-shopping-cart mypobox-small-font" aria-hidden="true"></i>
+                                <span>({{cart.count}})</span>
+                            </button>
+                            <button dir="ltr" class="btn btn-sm btn-success mypobox-desktop-table" title="{{'LBL_PAYMENT_CHECKOUT' | i18n}}">
+                                <span>{{'LBL_PAYMENT_CHECKOUT' | i18n}}</span>
+                                <i class="icon icon-shopping-cart mypobox-small-font" aria-hidden="true"></i>
+                                <span>({{cart.count}})</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body mypobox-panel-body">
+            <div id="no_orders_message" ng-if="request_status !== 'IN_PROGRESS' && !order_history.length">
+                <span>There are no orders made.</span>
+            </div>
+            <table class="table table-striped table-hover mypobox-table mypobox-desktop-table" ng-if="request_status !== 'IN_PROGRESS' && order_history.length">
+                <tr class="mypobox-table-header">
+                    <th>{{'COL_ORDERNUMBER' | i18n}}</th>
+                    <th>{{'LBL_RENTTYPE' | i18n}}</th>
+                    <th colspan="2">{{ 'COL_ACTION' | i18n}}</th>
+                    <th ng-class="(direction === 'rtl')?'text-left' : 'text-right'">{{'LBL_AMOUNT' | i18n }}</th>
+                </tr>
+                <tr ng-repeat="order in order_history track by $index">
+                    <td ng-attr-align="{{(direction === 'rtl') ? 'right' : 'left'}}" class="">
+                        <div class="mypobox-table-div">
+                            <span class="mypobox-order-number">
+                                <a ui-sref="order_details({order_pkid:{{order.pkid}}})">
+                                    {{ 'LBL_ORDERNUMBER' | i18n }} #{{order.order_number}}
+                                </a>
+                            </span>
+                            <span class="mypobox-label-parent">
+                                <span ng-if="order.order_status === 'X'" class="label label-expired mypobox-label">
+                                    {{ 'LBL_EXPIRED' | i18n}}
+                                </span>
+                                <span ng-if="order.order_status === 'CANCELLED'" class="label label-warning mypobox-label">
+                                    {{ 'LBL_CANCELLED' | i18n}}
+                                </span>
+                                <span ng-if="order.order_status === 'NOT PAID'" class="label label-not-paid mypobox-label">
+                                    <span class="block-display">{{ 'TXT_NOT_PAID' | i18n }}</span>
+                                    <span class="block-display">{{'MSG_UNPAIDEXPIRY' | i18n}}</span>
+                                </span>
+                                <!-- <span ng-if="order.order_status === 'PAID'" class="label label-primary mypobox-label">
+                                    <a ui-sref="payment_receipt({previous_view:'order_history',
+                                    payment_id:{{order.pkid}}})">
+                                        <span>{{ ('COL_TXNNUMBER' | i18n) }}:</span>
+                                        <span>{{order.transaction_number}}</span>
+                                    </a>
+                                </span> -->
+                                <span ng-if="order.order_status === 'PAID'" class="label label-paid mypobox-label">
+                                    {{ 'MSG_PAID' | i18n }}
+                                </span>
+                            </span>
+                        </div>
+                    </td>
+                    <td ng-attr-align="{{(direction === 'rtl') ? 'right' : 'left'}}" class="">
+                        <div class="mypobox-table-div" ng-if="order.order_type == 'RENEW'">
+                            {{'TXT_TYPE_RENEW' | i18n}}
+                        </div>
+                        <div class="mypobox-table-div" ng-if="order.order_type == 'NEW'">
+                            {{'TXT_TYPE_NEW' | i18n}}
+                        </div>
+                    </td>
+                    <td ng-attr-align="{{(direction === 'rtl') ? 'right' : 'left'}}" class="">
+                        <div class="mypobox-table-div" ng-if="order.order_status === 'NOT PAID'">
+                            <button class="btn btn-sm btn-primary" ng-if="!cart.orders[order.pkid]" ng-click="pay(order)" title="Pay">
+                                <span>{{'LBL_PAY_NOW' | i18n}}</span>
+                                <i class="icon icon-cart-plus mypobox-small-font" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-sm btn-primary" ng-if="!cart.orders[order.pkid]" ng-click="addToCart(order)" title="Add to the cart">
+                                <span>{{'LBL_ADD' | i18n}}</span>
+                                <i class="icon icon-cart-plus mypobox-small-font" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-sm btn-warning" ng-if="cart.orders[order.pkid]" ng-click="removeFromCart(order.pkid)" title="Remove from the cart">
+                                <span>{{'BTN_REMOVEACTION' | i18n}}</span>
+                                <i class="icon icon-cart-arrow-down mypobox-small-font" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </td>
+                    <td ng-attr-align="{{(direction === 'rtl') ? 'right' : 'left'}}" class="">
+                        <div class="mypobox-table-div" ng-if="order.order_status === 'NOT PAID'">
+                            <button class="btn btn-sm btn-danger" ng-click="cancelOrder(order.pkid)">
+                                <span>{{'BTN_CANCEL' | i18n }}</span>
+                            </button>
+                        </div>
+                    </td>
+                    <td ng-attr-align="{{(direction === 'rtl') ? 'left' : 'right'}}" class="">
+                        <div ng-class="(direction === 'rtl')?'mypobox-table-div text-left' :
+                    'mypobox-table-div text-right'">
+                            <span class="mypobox-order-date">
+                                {{order.order_date}}
+                            </span>
+                            <span class="mypobox-amount-field">
+                                {{ order.charge_amount | currency:'':2 }}
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="mypobox-mobile-table">
+                <div ng-repeat="order in order_history track by $index" class="mypobox-mobile-orders-view">
+                    <div class="mypobox-mobile-orders-div">
+                        <div ng-class="(direction === 'rtl')?'pull-right':'pull-left'">
+                            <div>
+                                <span class="mypobox-order-number">
+                                    <a ui-sref="order_details({order_pkid:{{order.pkid}}})">
+                                        {{ 'LBL_ORDERNUMBER' | i18n }} #{{order.order_number}}
+                                    </a>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="mypobox-label-parent">
+                                    <span ng-if="order.order_status === 'X'" class="label label-expired mypobox-label">
+                                        {{ 'LBL_EXPIRED' | i18n}}
+                                    </span>
+                                    <span ng-if="order.order_status === 'CANCELLED'" class="label label-warning mypobox-label">
+                                        {{ 'LBL_CANCELLED' | i18n}}
+                                    </span>
+                                    <span ng-if="order.order_status === 'NOT PAID'" class="label label-not-paid mypobox-label">
+                                        <span class="block-display">{{ 'TXT_NOT_PAID' | i18n }}</span>
+                                        <span class="block-display">{{'MSG_UNPAIDEXPIRY' | i18n}}</span>
+                                    </span>
+                                    <!-- <span ng-if="order.order_status === 'PAID'" class="label label-primary mypobox-label">
+                                        <a ui-sref="payment_receipt({previous_view:'order_history',
+                                        payment_id:{{order.pkid}}})">
+                                            <span>{{ ('COL_TXNNUMBER' | i18n) }}:</span>
+                                            <span>{{order.transaction_number}}</span>
+                                        </a>
+                                    </span> -->
+                                </span>
+                            </div>
+                            <div>
+                                <div class="mypobox-table-div" ng-if="order.order_type == 'RENEW'">
+                                    {{'TXT_TYPE_RENEW' | i18n}}
+                                </div>
+                                <div class="mypobox-table-div" ng-if="order.order_type == 'NEW'">
+                                    {{'TXT_TYPE_NEW' | i18n}}
+                                </div>
+                            </div>
+                            <div>
+                                <div ng-class="(direction !== 'rtl')?'mypobox-table-div text-left' :
+                                'mypobox-table-div text-right'">
+                                    <span class="mypobox-order-date">
+                                        {{order.order_date}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div>
+                                <div ng-class="(direction !== 'rtl')?'mypobox-table-div text-left' :
+                                'mypobox-table-div text-right'">
+                                    <span ng-class="(direction === 'rtl')?'mypobox-amount-field text-right' :
+                                'mypobox-amount-field text-left'">
+                                        {{ order.charge_amount | currency:'':2 }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mypobox-mobile-actions-div">
+                        <div ng-class="(direction === 'rtl')?'pull-left':'pull-right'">
+                            <div ng-class="(direction === 'rtl')?'mypobox-table-div pull-left' :
+                            'mypobox-table-div pull-right'" ng-if="order.order_status === 'NOT PAID'">
+                                <button class="btn btn-sm btn-danger" ng-click="cancelOrder(order.pkid)">
+                                    <span>{{'BTN_CANCEL' | i18n }}</span>
+                                </button>
+                            </div>
+                            <div ng-class="(direction === 'rtl')?'mypobox-table-div pull-left' :
+                            'mypobox-table-div pull-right'" ng-if="order.order_status === 'NOT PAID'">
+                                <button class="btn btn-sm btn-primary" ng-if="!cart.orders[order.pkid]" ng-click="pay(order)" title="Pay">
+                                    <span>{{'LBL_PAY_NOW' | i18n}}</span>
+                                    <i class="icon icon-cart-plus mypobox-small-font" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-sm btn-primary" ng-if="!cart.orders[order.pkid]" ng-click="addToCart(order)" title="Add to the cart">
+                                    <span>{{'LBL_ADD' | i18n}}</span>
+                                    <i class="icon icon-cart-plus mypobox-small-font" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-sm btn-warning" ng-if="cart.orders[order.pkid]" ng-click="removeFromCart(order.pkid)" title="Remove from the cart">
+                                    <span>{{'BTN_REMOVEACTION' | i18n}}</span>
+                                    <i class="icon icon-cart-arrow-down mypobox-small-font" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+﻿.fleft {
+    float: right !important;
+}
+
+.fright {
+    float: left !important;
+}
+
+.form_wrap .submit_btn_panel {
+    float: left !important;
+}
+
+.feature-list li .fa {
+    float: right;
+    width: 80px;
+    margin:-9px -16px 0 0;
+}
+
+#branches i{
+    float:right;
+    padding:0 0 0 10px;
+}
+
+
+.form-wizard > ul > li a:after {
+                position: absolute;
+                z-index: 4;
+                top: 20px;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: 4px;
+                content: '';
+                background: #ccc;
+            }
+
+        .form-wizard > ul > li:first-child a:after {
+            right: 50%;
+        }
+
+        .form-wizard > ul > li:last-child a:after {
+            left: 50%;
+            right: auto;
+            width: 50%;
+        }
+
+
+        .form-wizard > ul > li a:before {
+                position: absolute;
+                z-index: 4;
+                top: 20px;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                content: '';
+                background: #fff;
+            }
+
+
+
+.form-wizard .form-horizontal .control-label {
+    text-align: right !important;
+}
+
+/*.pull-right{
+    float: left !important;
+}*/
+
+
+ #name .salutation {
+        width: 20%;
+        float: right !important;
+    }
+
+    #name .text-name {
+        width: 40%;
+        float: right !important;
+        padding-left: 0px;
+        padding-right: 10px;
+    }
+
+
+/* added by muqsith */
+
+.mypobox-amount-field {
+    text-align: left;
+}
+
+.mypobox-label-parent {
+    text-align: right;
+}
+
+.mypobox-contract-details {
+    text-align: right;
+}
+
+.mypobox-order-number {
+    text-align: right;
+}

@@ -1,0 +1,83 @@
+<div>
+    <div ng-if="load.translationsloaded" ng-include="config.navUrl"></div>
+    <div ng-controller="mypoboxCtrl">
+        <div ng-if="load.translationsloaded">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row mypobox-panel-heading-row">
+                        <div class="col-xs-2">
+                            <span class="mypobox-back" ng-if="backbutton">
+                                <i class="icon icon-chevron-left" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="col-xs-8 mypobox-panel-heading-text">
+                            <span>{{ 'MAINMENU_BOX' | i18n }}</span>
+                        </div>
+                        <div class="col-xs-2">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body mypobox-panel-body">
+                    <div id="noboxes_message" ng-if="request_status !== 'IN_PROGRESS' && !poboxes.length">
+                        <span>No records found</span>
+                    </div>
+                    <table class="table table-striped table-hover mypobox-table" ng-if="request_status !== 'IN_PROGRESS' && poboxes.length">
+                        <tr ng-repeat="pobox in poboxes track by $index">
+                            <td align="center" class="mypobox-postbox-icon-td">
+                                <div class="mypobox-table-div">
+                                    <span class="mypobox-postbox-icon">
+                                        <i class="icon icon-university mypobox-large-font" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="mypobox-validuntill">
+                                        {{ 'COL_VALIDUNTIL' | i18n }}
+                                    </span>
+                                    <span class="mypobox-validuntill-date">
+                                        <!-- {{moment(pobox.valid_until, 'MMM DD, YYYY HH:mm:ss A').format('MMM DD, YYYY')}} -->
+                                        {{moment(pobox.valid_until).format('MMM DD, YYYY')}}
+                                    </span>
+                                </div>
+                            </td>
+                            <td align="center" class="mypobox-account-td">
+                                <div class="mypobox-table-div">
+                                    <span class="mypobox-customername">
+                                        {{pobox.owner.name.english.full + ' \\ ' + pobox.owner.name.arabic.full}}
+                                    </span>
+                                    <span class="mypobox-accounttype">
+                                        {{ pobox.rent_type == 'C' ? 'BOX_CORPORATEBUNDLES' :'BOX_INDIVIDUALBUNDLES' | i18n }}
+                                    </span>
+                                    <span class="mypobox-poboxnumber">
+                                        {{pobox.rent_box.box_number}}
+                                    </span>
+                                    <span class="mypobox-customer-emirate">
+                                        {{formHelper.getEmratesNameById(pobox.rent_box.emirate_id) }}
+                                    </span>
+                                </div>
+                            </td>
+                            <td align="center" class="mypobox-action-td">
+                                <span ng-if="pobox.remarks === 'NOT PAID'">
+                                    {{'MSG_UNPAIDEXPIRY' | i18n}}
+                                </span>
+                                <span ng-if="pobox.renewable === false && pobox.upgradable === false" style="color: #050505;font-size: 17px;">
+                                    {{'MSG_PAID' | i18n}}
+                                </span>
+                                <div class="mypobox-table-div">
+                                    <span ng-if="pobox.remarks === 'NOT PAID'">
+                                        {{'TXT_NOT_PAID' | i18n}}
+                                    </span>
+                                    <!-- <button ng-if="pobox.remarks === 'NOT PAID'" ng-click="payNow(pobox)" type="button" class="btn-xs btn-primary">{{'TXT_NOT_PAID' | i18n}}</button> -->
+                                    <span>
+                                        <button ng-if="pobox.renewable===true" ng-click="redirectToRenew(pobox)" type="button" class="btn-xs btn-primary" style="width:113.38px;">{{'BTN_RENEWBOX' | i18n }}</button>
+                                    </span>
+                                    <span style="margin-top:10%;">
+                                        <button ng-if="pobox.upgradable === true" ng-click="redirectToUpgrade('pobox-upgrade',pobox)" type="button" class="btn-xs btn-primary"
+                                            style="width:113.38px;">{{'BTN_UPGRADE' | i18n }}</button>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div>
+  <div class="row">
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">{{'LBL_REQUESTOR_INFO' | i18n}}</legend>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 form-group">
+          <label for="txtFNAME">{{'LBL_FIRSTNAME' | i18n}}
+            <span class="mandatoryColor">*</span>
+          </label>
+          <input name="LBL_FIRSTNAME" required ng-model="model.firstName" type="text" class="form-control" role="textbox" aria-disabled="false"
+            aria-readonly="false">
+        </div>
+        <div class="col-xs-12 col-sm-6 form-group">
+          <label>{{'LBL_LASTNAME' | i18n}} </label>
+          <input name="LBL_LASTNAME" ng-disabled="disableModel.lastName" ng-model="model.lastName" type="text" class="form-control"
+            role="textbox" aria-disabled="false" aria-readonly="false">
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <label>{{'LBL_NATIONALITY' | i18n}}
+            <span class="mandatoryColor">*</span>
+          </label>
+          <select name="LBL_NATIONALITY" required class="form-control" name="ownerInfoSectionNationality" id="ownerInfoSectionNationality"
+            ng-options="option.name for option in nationalities track by option.id" ng-model="model.selectedNationality">
+            <option value="">-- {{'LBL_NATIONALITY' | i18n}} --</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="row">
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">{{'LBL_CONTACTADDRESS' | i18n}}</legend>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 form-group">
+          <label>{{'LBL_ADDRESSMOBILE' | i18n}} *</label>
+          <input name="LBL_CONTACTADDRESS___LBL_DELIVERYCONTACTPHONE" required ng-model="model.mobile" type="text" class="form-control"
+            role="textbox" aria-disabled="false" aria-readonly="false">
+        </div>
+        <div class="col-xs-12 col-sm-6 form-group">
+          <label>{{'LBL_ADDRESSEMAIL' | i18n}} *</label>
+          <input name="LBL_ADDRESSEMAIL" ng-pattern="emailPattern" required ng-model="model.email" type="text" class=" form-control"
+            role="textbox" aria-disabled="false" aria-readonly="false">
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="row" ng-if="contractType == 'C'">
+    <fieldset class="scheduler-border">
+      <legend class="scheduler-border">{{'SUBSEC_TRADELICENSEINFO' | i18n}}</legend>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 form-group">
+          <label for="txtFNAME">{{'LBL_ADDRESSCOMPANYNAME' | i18n}}
+            <span class="mandatoryColor">*</span>
+          </label>
+          <input required name="SUBSEC_TRADELICENSEINFO___LBL_ADDRESSCOMPANYNAME" ng-model="model.companyName
+               " type="text" class="form-control" role="textbox">
+        </div>
+        <div class="col-xs-12 col-sm-6 form-group">
+          <label>{{'LBL_PASSPORTEXPIRYDATE' | i18n}}
+            <span class="mandatoryColor">*</span>
+          </label>
+          <datepicker date-format="dd-MM-yyyy" date-min-limit="{{yesterday.toString()}}">
+            <input required ng-pattern="datePattern" name="SUBSEC_TRADELICENSEINFO___LBL_PASSPORTEXPIRYDATE
+               " ng-model="model.tradeLicenseExpiryDate" type="text" title="{{ 'LBL_PASSPORTEXPIRYDATE' | i18n}}" class="form-control"
+              role="textbox">
+          </datepicker>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <br>
+  <div class="row">
+    <div class="parent-div-override" ng-include="config.billingInfoUrl"></div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="parent-div-override" ng-include="config.paymentInfoUrl"></div>
+  </div>
+  <div class="row">
+    <div class="parent-div-override" ng-include="config.surveyUrl"></div>
+  </div>
+</div>

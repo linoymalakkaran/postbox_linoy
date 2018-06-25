@@ -1,0 +1,79 @@
+<!Doctype html>
+<html>
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/ico" href="https://www.epg.gov.ae/favicon.ico">
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="U.A.E Postal Authority">
+  <meta name="keywords" content="post, postal, courier, mail, emirates post, emirates post group, post tracking, epg, post office, tracking, rates ">
+  <meta name="robots" content="index,follow">
+  <meta name="copyright" content="Emirates Post Group U.A.E">
+  <meta name="author" content="EPG IT eServices">
+  <meta name="language" content="english">
+  <meta name="revisit-after" content="7 days">
+  <title>Emirates Post Group</title>
+
+  <script type="text/javascript" src="public/js/jquery.min.js"></script>
+  <!-- endbuild -->
+</head>
+
+<body id="body" class="{{direction}}" dir="{{direction}}" ng-app="EPG.MYPOBOX.APP" ng-controller="indexCtrl" ng-cloak>
+
+  <link data-ng-if="direction === 'rtl'" ng-href="public/static/train_ar.css?{{timestamp}}" type="text/css" rel="stylesheet"
+  />
+  <link data-ng-if="direction === 'rtl'" ng-href="https://www.epg.ae/cdn_epg/resources/vendor/bootstrap/bootstrap-rtl.css?{{timestamp}}"
+    type="text/css" rel="stylesheet" />
+
+  <!-- Add your site or application content here -->
+  <div id="mainContainer">
+    <toaster-container></toaster-container>
+    <div class="mypobox-row-nomargin _main_app_container">
+      <div class="mypobox-row-nomargin">
+        <!-- content row -->
+        <div class="nopadding">
+          <ui-view></ui-view>
+        </div>
+      </div>
+      <div id="payment-form-div" class="payment-form-div">
+        <form id="payment-form" method="POST" target="_top">
+          <input type="text" name="APP_NAME" value="WEB_ESVC" />
+          <input type="text" name="SERVICE_NAME" value="PBOX" />
+          <input type="text" name="BILL_TO_FNAME" value="{{customer_name.english.first}}" />
+          <input type="text" name="BILL_TO_LNAME" value="{{customer_name.english.last}}" />
+          <input type="text" name="BILL_TO_EMAIL" value="{{customer_contact.email}}" />
+          <input type="text" name="BILL_TO_MOBILE" value="{{customer_contact.mobile}}" />
+          <input type="text" name="BILL_TO_STREET1" value="{{customer_contact.area}}" />
+          <input type="text" name="BILL_TO_STREET2" value="{{customer_contact.building}}" />
+          <input type="text" name="BILL_TO_STATE" value="{{customer_contact.emirate.id}}" />
+          <input type="text" name="BILL_TO_CITY" value="{{customer_contact.emirate.name | i18n}}" />
+          <input type="text" name="BILL_TO_COUNTRY" value="AE" />
+          <input type="text" name="BILL_TO_POSTCODE" value="{{cart.orders[0].pkid}}" />
+          <!-- lanaguage -->
+          <!-- <input type="text" name="LOCALE" value="{{customer_personalprofile.language.name | i18n}}" /> -->
+          <input type="text" name="LOCALE" value="EN" />
+          <input type="text" name="CURRENCY" value="AED" />
+          <input type="text" name="TOTAL_AMOUNT" value="{{cart.total_amount}}" />
+          <input type="text" id="TXN_REF" name="TXN_REF" value="{{txn_ref}}" />
+          <input type="text" name="CHANNEL" value="WEB" />
+
+          <input type="text" ng-repeat-start="o in cart.orders" />
+          <input type="text" name="{{'ITEM_VALUE_'+ o.index}}" value="{{o.charge_amount}}" />
+          <input type="text" name="{{'ITEM_CATEGORY_'+ o.index}}" value="{{o.order_type}}" />
+          <!-- <input type="text" name="{{'ITEM_NAME_'+ o.index}}" value="{{o.pkid}}" /> -->
+          <input type="text" name="{{'ITEM_NAME_'+ o.index}}" value="{{o.box_number}}" />
+          <input type="text" name="{{'ITEM_SKU_'+ o.index}}" value="{{o.order_number}}" />
+          <input type="text" ng-repeat-end="" />
+
+          <input type="text" id="RETURN_URL" name="RETURN_URL" value="{{return_url}}" />
+          <input type="text" name="CC" value="{{cc}}" />
+        </form>
+      </div>
+    </div>
+    <!-- </treasure-overlay-spinner> -->
+  </div>
+  <script type="text/javascript" src="https://www.epg.ae/cdn_epg/resources/js/if_child.js"></script>
+</body>
+
+</html>

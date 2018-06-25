@@ -1,0 +1,249 @@
+<div>
+    <div ng-include="config.navUrl"></div>
+    <div ng-controller="PaymentReceiptController" class="panel panel-primary">
+        <div class="panel-heading mypobox-receipt-title-panel" ng-if="payment.transaction_number">
+            <div class="row mypobox-panel-heading-row">
+                <div class="col-xs-2 pull-left">
+                    <span class="mypobox-back pull-left" ng-if="backbutton">
+                        <a ui-sref="{{previous_view}}">
+                            <i class="icon icon-chevron-left" aria-hidden="true"></i>
+                        </a>
+                    </span>
+                </div>
+                <div class="col-xs-8 pull-left">
+                    <div class="mypobox-panel-heading-text">
+                        {{ 'HDR_RECEIPT' | i18n }}
+                    </div>
+                </div>
+                <div class="col-xs-2 pull-right">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="panel-body mypobox-receipt-body-panel" ng-if="payment.transaction_number">
+            <div dir="ltr" ng-class="(!print_mode) ?
+                    'display-none' : 'row mypobox-print-page-header'">
+                <div class="col-xs-4 text-center">
+                    <img src="public/images/emiratespostLogo.png" />
+                </div>
+                <div class="col-xs-4 text-center">
+                    <h4>{{ 'HDR_RECEIPT' | i18n }}</h4>
+                </div>
+                <div class="col-xs-4 text-center">
+                    <img src="public/images/logo.png" />
+                </div>
+            </div>
+
+            <div id="mypobox-print-button-row" class="row mypobox-order-detail-row">
+                <div class="col-xs-12 text-center">
+                    <a title="Print" ng-click="printReceipt();">
+                        <i class="icon icon-print mypobox-extra-large-font"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row mypobox-order-detail-row">
+                <div class="col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{ 'HDR_BILLINGINFO' | i18n }}</strong>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>{{ 'LBL_CUSTOMERNAME' | i18n }}:</label>
+                                    <span>{{payment.customer.name.english.full}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>{{ 'LBL_EIDANUMBER' | i18n }}:</label>
+                                    <span>{{customer_personalprofile.eida}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>{{ 'LBL_ADDRESSMOBILE' | i18n }}:</label>
+                                    <span>{{customer_contact.mobile}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>{{ 'LBL_ADDRESSEMAIL' | i18n }}:</label>
+                                    <span>{{customer_contact.email}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mypobox-order-detail-row">
+                <div class="col-xs-12">
+                    <table class="table table-responsive">
+                        <tr>
+                            <th ng-class="(direction === 'rtl') ? 'text-right': 'text-left'">
+                                <strong>{{ 'COL_MAILCATEGORY' | i18n}}</strong>
+                            </th>
+                            <th class="text-center">
+                                <strong>{{ 'COL_QUANTITY' | i18n }}</strong>
+                            </th>
+                            <th class="text-center">
+                                <strong>{{ 'COL_AEDPRICE' | i18n }}</strong>
+                            </th>
+                            <th class="text-center">
+                                <strong>{{ 'COL_AEDVAT' | i18n }}</strong>
+                            </th>
+                            <th ng-class="(direction === 'rtl') ? 'text-left': 'text-right'">
+                                <strong>{{ 'TXT_AEDTOTALPRICE' | i18n }}</strong>
+                            </th>
+                        </tr>
+                        <tbody>
+                            <tr data-ng-repeat-start="order in payment.order_details track by $index">
+                                <td ng-class="(direction === 'rtl') ? 'text-right': 'text-left'" colspan="{{!(order_details_rows['order_'+order.order_number]) ?
+                                    5 : 4}}">
+                                    <i ng-class="!(order_details_rows['order_'+order.order_number]) ?
+                                       'icon icon-chevron-down cursor-pointer':
+                                       (direction === 'rtl') ? 'icon icon-chevron-left cursor-pointer'
+                                        : 'icon icon-chevron-right cursor-pointer'" ng-click="expandCollapseOrderDetails('order_'+order.order_number)"></i>
+                                    <!-- <strong>{{ 'COL_ORDERNUMBER' | i18n }} {{order.order_number}} {{ 'COL_BOXNUMBER' | i18n
+                                        }} {{order.contract.rent_box.box_number}}, {{ 'COL_VALIDUNTIL' | i18n }} {{moment(order.contract.valid_until,
+                                        'MMM DD, YYYY HH:mm:ss A') .format('DD-MM-YYYY')}}
+                                    </strong> -->
+                                    <strong>{{ 'COL_ORDERNUMBER' | i18n }} {{order.order_number}} {{ 'COL_BOXNUMBER' | i18n }} {{order.box.box_number}},
+                                        {{ 'COL_VALIDUNTIL' | i18n }} {{order.service_details[0].valid_until}}
+                                    </strong>
+                                </td>
+                                <td ng-if="(order_details_rows['order_'+order.order_number])" ng-class="(direction === 'rtl') ? 'text-left': 'text-right'">
+                                    {{ order.order_price | currency:'':2 }}
+                                </td>
+                            </tr>
+                            <tr class="collapse in order_{{order.order_number}}" style="padding-left:40px;" data-ng-repeat-start="orderDetails in order.service_details
+                                    track by $index">
+                                <td ng-class="(direction === 'rtl') ? 'text-right': 'text-left'">
+                                    <span class="label-cell-bold">
+                                        {{ orderDetails.service_code | i18n }}
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    {{ orderDetails.quantity }}
+                                </td>
+                                <td class="text-center">
+                                    {{ orderDetails.amount | currency:'':2 }}
+                                </td>
+                                <td class="text-center">
+                                    {{ orderDetails.tax_amount | currency:'':2 }}
+                                </td>
+                                <td ng-class="(direction === 'rtl') ? 'text-left': 'text-right'">
+                                    {{ (orderDetails.amount + orderDetails.tax_amount) | currency:'':2 }}
+                                </td>
+                            </tr>
+                            <tr data-ng-repeat-end="" ng-show="false">
+                                <td colspan="3"></td>
+                            </tr>
+                            <tr class="collapse in order_{{order.order_number}}">
+                                <td ng-class="(direction === 'rtl') ? 'text-right': 'text-left'">
+                                    <i>{{'TXT_SERVICE' | i18n}}</i>
+                                </td>
+                                <td>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td ng-class="(direction === 'rtl') ? 'text-left': 'text-right'">
+                                    {{ order.total_amount | currency:'':2 }}
+                                </td>
+                            </tr>
+                            <tr class="collapse in order_{{order.order_number}}">
+                                <td ng-class="(direction === 'rtl') ? 'text-right': 'text-left'">
+                                    <i>{{'TXT_TOTALVAT' | i18n}}</i>
+                                </td>
+                                <td>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td ng-class="(direction === 'rtl') ? 'text-left': 'text-right'">
+                                    {{ order.total_vat | currency:'':2 }}
+                                </td>
+                            </tr>
+                            <tr data-ng-repeat-end="" ng-show="false">
+                                <td colspan="5"></td>
+                            </tr>
+                            <tr>
+                                <td ng-class="(direction === 'rtl') ? 'text-right': 'text-left'">
+                                    <strong>
+                                        <i>{{ 'TXT_TOTALAEDORDERAMOUNT' | i18n }}</i>
+                                    </strong>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td ng-class="(direction === 'rtl') ? 'text-left': 'text-right'">
+                                    {{total_amount | currency:'':2}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td ng-class="(direction === 'rtl') ? 'text-right': 'text-left'">
+                                    <strong>
+                                        <i> {{ 'LBL_TAXREGNO' | i18n }} : </i>
+                                    </strong>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td ng-class="(direction === 'rtl') ? 'text-left': 'text-right'">
+                                    <strong>
+                                        <i>100242664900003</i>
+                                    </strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="row mypobox-order-detail-row">
+                <div class="col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading invoice-title">
+                            <strong>{{ 'HDR_PAYMENTDETAILS' | i18n }}</strong>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>{{ 'COL_PAIDON' | i18n }}:</label>
+                                    <span ng-if="payment.payment_date">
+                                        {{moment(payment.payment_date, 'MMM DD, YYYY HH:mm:ss A') .format('dddd, MMMM DD, YYYY')}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>{{ 'TXT_PAYMENTGATEWAY' | i18n }}:</label>
+                                    <span>Network International</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>{{ 'TXT_PAYMENTMETHOD' | i18n }}:</label>
+                                    <span>{{'LBL_CARD_PAYMENT' | i18n}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>{{ 'COL_AEDPAIDAMOUNT' | i18n }}:</label>
+                                    <span>{{payment.paid_amount | currency:'':2}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label>{{ 'COL_TXNNUMBER' | i18n }}:</label>
+                                    <span>{{payment.transaction_number}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title ng-binding"> {{'HDR_PAYMENTDETAILS' |i18n}}</h3>
+    </div>
+    <div class="panel-body">
+        <div style="margin-right: -15px;margin-left: -15px;" class="row">
+            <div class="row" ng-if="isRenewable">
+                <div class="col-sm-7 col-xs-8">
+                    <label class="control-label price-total">
+                        {{'TXT_AEDRENEWPRICE' |i18n}}
+                        <span class="glyphicon flyphicon-question-sign" title="Total VAT"></span>
+                    </label>
+                </div>
+                <div class="col-sm-5 col-xs-4">
+                    <label class="checkbox-inline">
+                        <label class="control-label price-total ng-binding">
+                            {{renewTotalPrice | number : 2}}
+                        </label>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-8">
+                    <label class="control-label price-total">
+                        {{'TXT_AEDRENEWVATPRICE' |i18n}}
+                        <span class="glyphicon flyphicon-question-sign" title=""></span>
+                    </label>
+                </div>
+                <div class="col-sm-5 col-xs-4">
+                    <label class="checkbox-inline">
+                        <label class="control-label price-total ng-binding">
+                            {{getTotalVatForRenew() | number : 2}}
+                        </label>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <hr class="hr-style">
+            </div>
+            <div class="row">
+                <div class="col-sm-7 col-xs-8">
+                    <label class="control-label price-total">
+                        {{'TXT_AEDUPGRADEPRICE' |i18n}}
+                        <span class="glyphicon flyphicon-question-sign" title=""></span>
+                    </label>
+                </div>
+                <div class="col-sm-5 col-xs-4">
+                    <label class="checkbox-inline">
+                        <label class="control-label price-total ng-binding">
+                            {{upgradeTotalPrice | number : 2}}
+                        </label>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-8">
+                    <label class="control-label price-total">
+                        {{'TXT_AEDUPGRADEVATPRICE' |i18n}}
+                        <span class="glyphicon flyphicon-question-sign" title=""></span>
+                    </label>
+                </div>
+                <div class="col-sm-5 col-xs-4">
+                    <label class="checkbox-inline">
+                        <label class="control-label price-total ng-binding">
+                            {{getTotalVatForUpgrade() | number : 2}}
+                        </label>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <hr class="hr-style">
+            </div>
+            <div class="row">
+                <div class="col-sm-7 col-xs-8">
+                    <label class="control-label price-total ng-binding">
+                        {{'TXT_AEDTOTALPRICE' |i18n}}
+                        <span class="glyphicon flyphicon-question-sign" title="Total Charges"></span>
+                    </label>
+                </div>
+                <div class="col-sm-5 col-xs-4">
+                    <label class="checkbox-inline">
+                        <label class="control-label price-total ng-binding">
+                            {{totalPrice | number : 2}}
+                        </label>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div>
+    <div ng-include="config.navUrl"></div>
+    <div ng-controller="PoboxUpgradeController" class="form_wrap">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <span ng-click="isUpgradeSectionvisible = !isUpgradeSectionvisible; backbutton = false;" class="mypobox-back check-element funky-show-hide"
+                            ng-show="backbutton">
+                            <i class="icon icon-chevron-left" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="col-xs-7">
+                        <span>{{ 'HDR_UPGRADEPOBOX' | i18n }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="check-element funky-show-hide" ng-show="!isUpgradeSectionvisible">
+                <div class="row col-xs-12">
+                    <label class="col-xs-3 control-label">
+                        <b>{{'TERMS_OF_USE' |i18n}}</b>
+                    </label>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <iframe src='{{template.upgraeTermsAndConditionPDF}}' width="100%" height="777px;" frameborder='0'></iframe>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="checkbox">
+                                    <label>
+                                        <input ng-model="IsAgreed" type="checkbox" name="agree" value="false" /> {{'AGREE_TERMS_CONDITION' |i18n}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <button type="button" ng-click="isUpgradeSectionvisible = IsAgreed; backbutton = true;" class="btn btn-primary" name="accept terms">
+                                    <span class="ui-button-text glyphicon" ng-class="isRtl() ?'glyphicon-hand-left':'glyphicon-hand-right'"></span>
+                                    {{'BTN_PROCEED' |i18n}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form novalidate name="formUpgradeForm" class="form-horizontal" ng-submit="UpgradePobox(formUpgradeForm)">
+                <div class="panel-body mypobox-panel-body">
+                    <div class="check-element funky-show-hide" ng-show="isUpgradeSectionvisible">
+                        <div ng-include="template.upgradeOwnerDetails"></div>
+                        <div class="clearfix"></div>
+                        <div ng-if="isBundleSelected" ng-include="template.upgradePriceList"></div>
+                        <div class="clearfix"></div>
+                        <div ng-if="isBundleSelected" ng-include="template.upgradeTotalPaymentDetails"></div>
+                        <div ng-if="isBundleSelected" ng-include="template.upgradePaymentInfo"></div>
+                    </div>
+                    <div class="check-element funky-show-hide" ng-show="isUpgradeSectionvisible" class="row form-group">
+                        <div class="col-sm-12">
+                            <div class="booking-button">
+                                <button class="proceedbtn" ng-click="isUpgradeSectionvisible = !isUpgradeSectionvisible; backbutton = false;" type="button"
+                                    role="button">
+                                    <span class="ui-button-text glyphicon" ng-class="isRtl() ?'glyphicon-hand-right':'glyphicon-hand-left'"></span>
+                                    {{'BTN_BACK' |i18n}}
+                                </button>
+                                <button ng-disabled="formUpgradeForm.$invalid" type="submit" class="proceedbtn" type="subimit" role="button">
+                                    {{'BTN_PAY' |i18n}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="row">
+  <br>
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p class="text-primary">
+          <b>{{'LBL_POSTAL_DEL_HEADER' | i18n}}</b>
+        </p>
+      </div>
+      <div class="panel-body">
+        <div class="row col-sm-12">
+          <label>
+            {{'LBL_POSTAL_DEL_MSG' | i18n}}
+          </label>
+          <div>
+            <label class="checkbox-inline">
+              <input ng-required="!postalDelivery.status" type="radio" name="MSG_SURVEY_ERROR" ng-model="postalDelivery.status" value="YES">&nbsp; {{'VAL_YES' | i18n}}
+            </label>
+            <label class="checkbox-inline">
+              <input ng-required="!postalDelivery.status" type="radio" name="MSG_SURVEY_ERROR" ng-model="postalDelivery.status" value="NO"> &nbsp; {{'VAL_NO' | i18n}}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

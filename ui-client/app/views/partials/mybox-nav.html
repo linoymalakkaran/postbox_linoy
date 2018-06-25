@@ -1,0 +1,20 @@
+<div id="topNav" class="mypobox-row-nomargin nav-bar-row">
+    <!-- nav bar row -->
+    <div class="nopadding mypobox-navbar-col">
+        <ul ng-class="(direction !== 'rtl')?'mypobox-nav pull-right' :
+            'mypobox-nav pull-left'">
+            <li>
+                <a ng-click="assignRoute('mypobox')" ng-class="(current_route === 'mypobox') ? 'activelink': ''" ui-sref="mypobox">{{ 'HDR_MYBOXES' | i18n }}</a>
+            </li>
+            <li>
+                <a ng-click="assignRoute('order_history')" ng-class="(current_route === 'order_history') ? 'activelink': ''" ui-sref="order_history">{{ 'MNU_ORDER_HISTORY' | i18n }}</a>
+            </li>
+            <li>
+                <a ng-click="assignRoute('payment_history')" ng-class="(current_route === 'payment_history') ? 'activelink': ''" ui-sref-active="activelink"
+                    ui-sref="payment_history">
+                    {{ 'MNU_PAYMENT_HISTORY' | i18n }}</a>
+            </li>
+        </ul>
+        <div class="clr"></div>
+    </div>
+</div>

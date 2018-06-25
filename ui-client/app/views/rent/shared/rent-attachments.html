@@ -1,0 +1,18 @@
+<div class="row">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">{{'LBL_ATTACHMENT' | i18n}}</legend>
+        <div class="col-xs-12 col-sm-12 form-group submit-hidden">
+            <span>(max. size 2MB. file types: jpg,png,pdf,doc,docx)</span>
+        </div>
+        <form-input ng-if="model.selectedNationality.id != 'ARE'" filetext="LBL_UPLOADPASSPORT" nametext="LBL_ATTACHMENT___LBL_UPLOADPASSPORT"
+            ng-model="attachments.passport" required="true" upload-file="uploadFile(attachment, model)" delete-file="deleteFile(model)"></form-input>
+        <form-input ng-if="model.selectedNationality.id != 'ARE'" filetext="LBL_EIDANUMBER" nametext="LBL_ATTACHMENT___LBL_EIDANUMBER"
+            ng-model="attachments.emiratesId" required="true" upload-file="uploadFile(attachment, model)" delete-file="deleteFile(model)"></form-input>
+        <form-input ng-if="model.selectedNationality.id == 'ARE'" filetext="FamilyBook" nametext="LBL_ATTACHMENT___FamilyBook" ng-model="attachments.familyBook"
+            required="true" upload-file="uploadFile(attachment, model)" delete-file="deleteFile(model)"></form-input>
+        <form-input filetext="LBL_UPLOADTRADELICENSE" nametext="LBL_ATTACHMENT___LBL_UPLOADTRADELICENSE" ng-model="attachments.tradeLicense"
+            required="true" upload-file="uploadFile(attachment, model)" delete-file="deleteFile(model)"></form-input>
+        <form-input ng-if="false" filetext="LBL_NOC" nametext="LBL_ATTACHMENT___LBL_NOC" ng-model="attachments.noc" required="true"
+            upload-file="uploadFile(attachment, model)" delete-file="deleteFile(model)"></form-input>
+    </fieldset>
+</div>

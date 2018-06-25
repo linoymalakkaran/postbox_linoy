@@ -1,0 +1,22 @@
+<div class="row">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">{{'LBL_CONTACTADDRESS' | i18n}}</legend>
+        <h2></h2>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 form-group">
+                <label>{{'LBL_ADDRESSMOBILE' | i18n}}
+                    <span class="red_toggle_color">*</span>
+                </label>
+                <input name="LBL_CONTACTADDRESS___LBL_ADDRESSMOBILE" required ng-model="model.mobile" type="text" class="form-control" role="textbox"
+                    aria-disabled="false" aria-readonly="false">
+            </div>
+            <div class="col-xs-12 col-sm-6 form-group">
+                <label>{{'LBL_ADDRESSEMAIL' | i18n}}
+                    <span class="red_toggle_color">*</span>
+                </label>
+                <input name="LBL_ADDRESSEMAIL" ng-pattern="emailPattern" required ng-model="model.email" type="text" class=" form-control"
+                    role="textbox" aria-disabled="false" aria-readonly="false">
+            </div>
+        </div>
+    </fieldset>
+</div>

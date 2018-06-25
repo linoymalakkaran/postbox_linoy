@@ -1,0 +1,199 @@
+<div>
+    <div ng-include="config.navUrl"></div>
+    <div ng-controller="OrderDetailsController" class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row mypobox-panel-heading-row">
+                <div class="col-xs-4 pull-left">
+                    <div class="mypobox-chevron-div">
+                        <span class="mypobox-back pull-left" ng-if="backbutton">
+                            <a ui-sref="order_history">
+                                <i class="icon icon-chevron-left" aria-hidden="true"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-4 pull-left">
+                    <div class="mypobox-panel-heading-text">
+                        <div class="mypobox-table-div">
+                            <span class="mypobox-orderdetail-header-ordernumber">
+                                {{ 'HDR_ORDERDETAILS' | i18n }}
+                            </span>
+                            <span>
+                                <span>
+                                    {{ 'LBL_ORDERNUMBER' | i18n }} # {{order.order_number}}
+                                </span>
+                                <span class="mypobox-label-parent">
+                                    <span ng-if="order.order_status === 'X'" class="label label-danger mypobox-label">
+                                        {{ 'LBL_EXPIRED' | i18n}}
+                                    </span>
+                                    <span ng-if="order.order_status === 'CANCELLED'" class="label label-warning mypobox-label">
+                                        {{ 'LBL_CANCELLED' | i18n}}
+                                    </span>
+                                    <span ng-if="order.order_status === 'NOT PAID'" class="label label-danger mypobox-label">
+                                        {{ 'TXT_NOT_PAID' | i18n }}
+                                    </span>
+                                    <span ng-if="order.order_status === 'PAID'" class="label label-info mypobox-label">
+                                        {{ 'MSG_PAID' | i18n }}
+                                    </span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 pull-right">
+                    <div class="mypobox-checkout-div" ng-if="cart.count">
+                        <a ui-sref="payment_checkout">
+                            <button dir="ltr" class="btn btn-sm btn-success mypobox-mobile-table" title="{{'LBL_PAYMENT_CHECKOUT' | i18n}}">
+                                <i class="icon icon-shopping-cart mypobox-small-font" aria-hidden="true"></i>
+                                <span>({{cart.count}})</span>
+                            </button>
+                            <button dir="ltr" class="btn btn-sm btn-success mypobox-desktop-table" title="{{'LBL_PAYMENT_CHECKOUT' | i18n}}">
+                                <span>{{'LBL_PAYMENT_CHECKOUT' | i18n}}</span>
+                                <i class="icon icon-shopping-cart mypobox-small-font" aria-hidden="true"></i>
+                                <span>({{cart.count}})</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body mypobox-panel-body">
+            <div class="row mypobox-panel-heading-row mypobox-order-detail-row-border">
+                <div ng-class="(direction === 'rtl') ? 'col-xs-1 pull-right' : 'col-xs-1 pull-left'">
+                    <div class="mypobox-table-div">
+                        <span class="mypobox-order-detail-icon">
+                            <i class="icon icon-university mypobox-large-font" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+                <div ng-class="(direction === 'rtl') ? 'col-xs-11 pull-right' : 'col-xs-11 pull-left'">
+                    <div class="mypobox-table-div mypobox-contract-details">
+                        <span class="mypobox-order-details-box">
+                            <span>
+                                {{box.box_number}}
+                            </span>
+                            <span ng-if="contract.rent_box.admin_office_city">
+                                , {{box.emirate_id}}
+                            </span>
+                        </span>
+                        <span class="mypobox-order-details-expiry">
+                            {{order.service_details[0].valid_until}}
+                        </span>
+                        <!-- <span class="mypobox-order-details-expiry">
+                            {{ 'Expiry' | i18n }}: {{ (order.service_details[0].valid_until) ? moment(order.service_details[0].valid_until, 'MMM DD,
+                            YYYY HH:mm:ss A').format('DD-MM-YYYY'):''}}
+                        </span> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mypobox-order-detail-row">
+                <div class="col-xs-12">
+                    <span ng-class="(direction === 'rtl') ?
+                            'pull-left mypobox-order-date' : 'pull-right mypobox-order-date'">
+                        {{ order.order_date }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="row mypobox-order-detail-row">
+                <div class="col-xs-12">
+                    <table class="table table-striped table-hover mypobox-table">
+                        <tr>
+                            <td ng-attr-align="{{(direction === 'rtl') ? 'right' : 'left'}}">
+                                <span class="mypobox-order-detail-table-th">
+                                    {{ 'COL_PRODUCT' | i18n }}
+                                </span>
+                            </td>
+                            <td align="center">
+                                <span class="mypobox-order-detail-table-th">
+                                    {{ 'COL_QUANTITY' | i18n }}
+                                </span>
+                            </td>
+                            <td align="center">
+                                <span class="mypobox-order-detail-table-th">
+                                    {{ 'COL_AEDPRICE' | i18n }}
+                                </span>
+                            </td>
+                            <td align="center">
+                                <span class="mypobox-order-detail-table-th">
+                                    {{ 'COL_AEDVAT' | i18n }}
+                                </span>
+                            </td>
+                            <td ng-attr-align="{{(direction === 'rtl') ? 'left' : 'right'}}">
+                                <span class="mypobox-order-detail-table-th">
+                                    {{ 'TXT_AEDTOTALPRICE' | i18n }}
+                                </span>
+                            </td>
+                        </tr>
+                        <tfoot>
+                            <tr>
+                                <td ng-attr-align="{{(direction === 'rtl') ? 'right' : 'left'}}" class="mypobox-total-row">{{'LBL_TOTALPAYAMOUNT' | i18n}}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td ng-attr-align="{{(direction === 'rtl') ? 'left' : 'right'}}">
+                                    <div>
+                                        <span class="mypobox-total-amount">
+                                            AED {{ order.charge_amount | currency:'':2 }}
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr ng-repeat="contract in order.service_details
+                                        track by $index ">
+                                <td ng-attr-align="{{(direction === 'rtl') ? 'right' : 'left'}}">
+                                    <span>
+                                        {{ contract.service_code | i18n }}
+                                    </span>
+                                </td>
+                                <td align="center">
+                                    <div>
+                                        <span>
+                                            {{ contract.quantity }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td align="center">
+                                    <div>
+                                        <span>
+                                            {{ contract.amount | currency:'':2 }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td align="center">
+                                    <div>
+                                        <span>
+                                            {{ contract.tax_amount | currency:'':2 }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td ng-attr-align="{{(direction === 'rtl') ? 'left' : 'right'}}">
+                                    <div>
+                                        <span>
+                                            {{ contract.amount + contract.tax_amount | currency:'':2 }}
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row mypobox-order-detail-row" ng-if="order.order_status === 'NOT PAID'">
+                <div class="col-xs-12 mypobox-order-detail-paynow">
+                    <button class="btn btn-sm btn-primary" ng-if="!cart.orders[order.pkid]" ng-click="addToCart()" title="Add to the cart">
+                        <span>{{'LBL_ADD' | i18n}}</span>
+                        <i class="icon icon-cart-plus mypobox-small-font" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn btn-sm btn-warning" ng-if="cart.orders[order.pkid]" ng-click="removeFromCart(order.pkid)" title="Remove from the cart">
+                        <span>{{'BTN_REMOVEACTION' | i18n}}</span>
+                        <i class="icon icon-cart-arrow-down mypobox-small-font" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,203 @@
+<div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"> {{'HDR_POBOX_OWNER_DETAILS' | i18n}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'LBL_FULL_NAME' | i18n}}
+                        <span class="mandatory-field">*</span>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <input ng-model="model.customerName" name="LBL_NAME" required="" class="form-control fields mobile" placeholder="{{'LBL_NAME' | i18n}}"
+                        maxlength="70" type="text">
+                </div>
+            </div>
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'LBL_ADDRESSMOBILE' | i18n}}
+                        <span class="mandatory-field">*</span>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <input ng-model="model.mobile" name="LBL_ADDRESSMOBILE" required="" class="form-control fields mobile" placeholder="05xxxxxxxx"
+                        maxlength="50" type="text">
+                </div>
+            </div>
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'LBL_ADDRESSEMAIL' | i18n}}
+                        <span class="mandatory-field">*</span>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <input ng-model="model.email" name="LBL_ADDRESSEMAIL" required="" placeholder="{{'LBL_ADDRESSEMAIL' | i18n}}" class="form-control fields"
+                        type="text" maxlength="50">
+                </div>
+            </div>
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'LBL_VILLA_NUMBER' | i18n}}
+                        <span class="mandatory-field">*</span>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <input ng-model="model.villaNumber" name="LBL_VILLA_NUMBER" required="" placeholder="{{'LBL_VILLA_NUMBER' | i18n}}" class="form-control fields"
+                        type="text" maxlength="50">
+                </div>
+            </div>
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'LBL_ADDRESSCOMPANYLOCATION' | i18n}}
+                        <span class="mandatory-field">*</span>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <input ng-model="model.location" name="LBL_ADDRESSCOMPANYLOCATION" required="" placeholder="{{'LBL_ADDRESSCOMPANYLOCATION' | i18n}}"
+                        class="form-control fields" type="text" maxlength="50">
+                </div>
+            </div>
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'LBL_COMMUNITY' | i18n}}
+                        <span class="mandatory-field">*</span>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <input ng-model="model.community" name="LBL_COMMUNITY" required="" placeholder="{{'LBL_COMMUNITY' | i18n}}" class="form-control fields"
+                        type="text" maxlength="50">
+                </div>
+            </div>
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'LBL_ADDRESSLANDMARK' | i18n}}
+                        <span class="mandatory-field">*</span>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <input ng-model="model.landmark" name="LBL_ADDRESSLANDMARK" required="" placeholder="{{'LBL_ADDRESSLANDMARK' | i18n}}" class="form-control fields"
+                        type="text" maxlength="50">
+                </div>
+            </div>
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'LBL_MAKANI' | i18n}}
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <input ng-required="MakaniRequired()" ng-model="model.makani" name="LBL_MAKANI" placeholder="{{'LBL_MAKANI' | i18n}}" class="form-control fields"
+                        type="text">
+                </div>
+            </div>
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'LBL_GPS' | i18n}}
+                    </label>
+                    <!-- <a ng-click="toolTip.showMapToolTip = !toolTip.showMapToolTip" href="javascript:void(0);">
+                        <i class="fa fa-question-circle"></i>
+                    </a> -->
+                    <a data-toggle="modal" data-target="#gpsModel" href="javascript:void(0);">
+                        <i class="fa fa-question-circle"></i>
+                    </a>
+                    <div ng-include="template.mapCordinateTooltip">
+                    </div>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <div class="form-group single">
+                        <div class="col-sm-3.5 col-xs-6">
+                            <input ng-required="GPSRequired('gpsX')" ng-model="model.gpsX" name="LBL_GPSX" placeholder="{{'LBL_GPSX' | i18n}}" class="form-control fields"
+                                type="text">
+                        </div>
+                        <div class="col-sm-3.5 col-xs-6">
+                            <input ng-required="GPSRequired('gpsY')" ng-model="model.gpsY" name="LBL_GPSY" placeholder="{{'LBL_GPSY' | i18n}}" class="form-control fields"
+                                type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ 'HDR_POBOX_DETAILS' | i18n }}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'LBL_CITY' | i18n}}
+                        <span class="mandatory-field">*</span>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <input ng-model="model.emirateName" ng-disabled="true" required placeholder="{{'LBL_CITY' | i18n}}" class="form-control fields"
+                        type="text">
+                </div>
+            </div>
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'LBL_POBOX_NUMBER' | i18n}}
+                        <span class="mandatory-field">*</span>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <input ng-model="model.poboxNumber" ng-disabled="true" required placeholder="{{'LBL_POBOX_NUMBER' | i18n}}" class="form-control fields"
+                        type="text">
+                </div>
+            </div>
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'LBL_CURRENT_CONTRACT_TYPE' | i18n}}
+                        <span class="mandatory-field">*</span>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <input ng-model="model.contractType" ng-disabled="true" required placeholder="{{'LBL_CURRENT_CONTRACT_TYPE' | i18n}}" class="form-control fields"
+                        type="text">
+                </div>
+            </div>
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'LBL_BUNDLE' | i18n}}
+                        <span class="mandatory-field">*</span>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <select required ng-change="setUpgradeDetails();" class="form-control fields" name="LBL_BUNDLE" ng-options="option.name for option in bundles track by option.id"
+                        ng-model="model.selectedBundle">
+                        <option value="">-- {{'SELECT_BUNDLE' | i18n}} --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group single">
+                <div class="col-sm-5 col-xs-12">
+                    <label class="control-label">
+                        {{'DELIVERY_OFFICE' | i18n}}
+                        <span class="mandatory-field">*</span>
+                    </label>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <select required class="form-control fields" name="DELIVERY_OFFICE" ng-options="option.name for option in deliveryOffices track by option.id"
+                        ng-model="model.selectedDeliveryOffice">
+                        <option value="">-- {{'SELECT_DELIVERY_OFFICE' | i18n}} --</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
